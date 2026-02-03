@@ -43,7 +43,7 @@ export default function Navbar({
           {logo && (
             <div className="flex-shrink-0">
               {typeof logo === 'string' ? (
-                <img src={logo} alt={brandName} className="h-20 w-auto" />
+                <img src={logo} alt={brandName} className="h-24 rounded-full w-auto" />
               ) : (
                 logo
               )}

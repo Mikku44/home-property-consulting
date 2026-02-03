@@ -8,18 +8,20 @@ export default function layout() {
         <main>
 
             <Navbar
-                logo="/logo-blue.jpg"
+                logo="logo-black.jpg"
                 brandName="HPCCL"
                 links={[
-                    { label: "ซื้อ / ขาย", href: "/buy-sell" },
-                    { label: "เช่า", href: "/rent" },
-                    { label: "ทรัพย์ทั้งหมด", href: "/properties" },
+                    { label: "หน้าแรก", href: "/" },
+                    { label: "บริการของเรา", href: "/services" },
+                    { label: "บทความ", href: "/blog" },
                     { label: "เกี่ยวกับเรา", href: "/about" },
                     { label: "ติดต่อ", href: "/contact" }
                 ]}
+                backgroundColor='bg-[#080e1c]'
+                textColor="text-white"
                 rightContent={
                     <div className="flex gap-3">
-                      
+
                         <button className="px-4 py-2 btn-primary">
                             Get Started
                         </button>
