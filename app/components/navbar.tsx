@@ -11,8 +11,8 @@ interface NavbarProps {
   brandName?: string;
   links?: NavLink[];
   rightContent?: React.ReactNode;
-  backgroundColor?: string;
   textColor?: string;
+  className? : string;
   sticky?: boolean;
   onLogoClick?: () => void;
 }
@@ -22,7 +22,7 @@ export default function Navbar({
   brandName = "Brand",
   links = [],
   rightContent,
-  backgroundColor = "bg-white",
+  className = "",
   textColor = "text-gray-900",
   sticky = false,
   onLogoClick
@@ -33,8 +33,8 @@ export default function Navbar({
   const shadowClass = sticky ? "shadow-md" : "";
 
   return (
-    <header className={`w-full py-2 px-4 ${backgroundColor} ${textColor} ${stickyClass} ${shadowClass}`}>
-      <nav className="container-md mx-auto flex items-center justify-between">
+    <header className={`w-full py-2 px-4  ${className} ${textColor}  ${shadowClass}`}>
+      <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo / Brand */}
         <div
           className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
@@ -43,7 +43,7 @@ export default function Navbar({
           {logo && (
             <div className="flex-shrink-0">
               {typeof logo === 'string' ? (
-                <img src={logo} alt={brandName} className="h-24 rounded-full w-auto" />
+                <img src={logo} alt={brandName} className="h-16 rounded-full w-auto" />
               ) : (
                 logo
               )}

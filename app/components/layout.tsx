@@ -17,8 +17,8 @@ export default function layout() {
                     { label: "เกี่ยวกับเรา", href: "/about" },
                     { label: "ติดต่อ", href: "/contact" }
                 ]}
-                backgroundColor='bg-[#080e1c]'
-                textColor="text-white"
+                className='fixed top-0 z-10 bg-transparent shadow-none'
+                textColor="text-(--secondary-color)"
                 rightContent={
                     <div className="flex gap-3">
 
@@ -32,14 +32,7 @@ export default function layout() {
             />
 
             <Outlet />
-            <Footer
-                companyName="HPCCL"
-                year={2026}
-                links={footerLinks}
-                socialLinks={socialLinks}
-                backgroundColor="bg-slate-900"
-                textColor="text-gray-100"
-            />
+            <Footer/>
         </main>
     )
 }

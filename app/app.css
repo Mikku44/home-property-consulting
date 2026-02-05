@@ -6,7 +6,7 @@
 }
 
 :root {
-  --primary-color : rgb(191, 180, 23);
+  --primary-color : rgb(237, 173, 13);
   --bg-color : #080e1c;
 }
 
@@ -19,5 +19,7 @@ body {
 
 
 .btn-primary {
-  @apply bg-(--primary-color) text-white rounded-full px-4 cursor-pointer;
+  @apply px-12 py-5 bg-(--primary-color) text-xs font-bold
+   uppercase tracking-widest hover:text-white
+   text-white rounded-full border border-(--primary-color) transition-all duration-500;
 }

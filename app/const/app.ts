@@ -3,6 +3,7 @@ export const footerLinks = [
     title: "บริการของเรา",
     items: [
       { label: "ซื้อ / ขาย", href: "/buy-sell" },
+      { label: "ขายฝาก ดอกเบี้ย 1.25%", href: "/consignment " },
       { label: "เช่า / ให้เช่า", href: "/rent" },
       { label: "ประเมินราคา", href: "/valuation" }
     ]
