@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface NavLink {
   label: string;
@@ -12,9 +12,11 @@ interface NavbarProps {
   links?: NavLink[];
   rightContent?: React.ReactNode;
   textColor?: string;
-  className? : string;
+  className?: string;
   sticky?: boolean;
   onLogoClick?: () => void;
+  // New prop to customize the scrolled background color
+  scrolledBgColor?: string; 
 }
 
 export default function Navbar({
@@ -24,16 +26,33 @@ export default function Navbar({
   rightContent,
   className = "",
   textColor = "text-gray-900",
-  sticky = false,
-  onLogoClick
+  sticky = true, // Usually desired if changing bg on scroll
+  onLogoClick,
+  scrolledBgColor = "bg-white/95 backdrop-blur-md"
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const stickyClass = sticky ? "sticky top-0 z-50" : "";
-  const shadowClass = sticky ? "shadow-md" : "";
+  useEffect(() => {
+    const handleScroll = () => {
+      // Trigger change after scrolling 20 pixels
+      if (window.scrollY > 20) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const stickyClass = sticky ? "fixed top-0 left-0 z-50 transition-all duration-300" : "";
+  const backgroundClass = isScrolled ? scrolledBgColor : "bg-transparent";
+  const shadowClass = isScrolled ? "shadow-md" : "";
 
   return (
-    <header className={`w-full py-2 px-4  ${className} ${textColor}  ${shadowClass}`}>
+    <header className={`w-full py-2 px-4 ${stickyClass} ${backgroundClass} ${className} ${textColor} ${shadowClass}`}>
       <nav className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo / Brand */}
         <div
@@ -58,7 +77,7 @@ export default function Navbar({
             <a
               key={index}
               href={link.href}
-              className="flex items-center gap-2 hover:opacity-70 transition-opacity"
+              className="flex items-center gap-2 hover:opacity-70 transition-opacity font-medium"
             >
               {link.icon && <span>{link.icon}</span>}
               {link.label}
@@ -66,14 +85,14 @@ export default function Navbar({
           ))}
         </div>
 
-        {/* Right Content (Login, Button, etc) */}
+        {/* Right Content */}
         <div className="hidden md:flex items-center gap-4">
           {rightContent}
         </div>
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden flex flex-col gap-1.5"
+          className="md:hidden flex flex-col gap-1.5 z-50"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -91,7 +110,7 @@ export default function Navbar({
 
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
+        <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4 bg-white px-4">
           <div className="flex flex-col gap-4">
             {links.map((link, index) => (
               <a

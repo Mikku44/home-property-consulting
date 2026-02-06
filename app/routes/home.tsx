@@ -6,6 +6,7 @@ import {
   ArrowUpRight,
   Plus
 } from 'lucide-react';
+import { Link } from 'react-router';
 
 // --- Types ---
 interface Service {
@@ -94,7 +95,7 @@ export default function HomePropertyPro() {
         <AnimatePresence mode="wait">
           <motion.div key={index} {...imageTransition} className="absolute inset-0 z-0">
             <img
-              src={index === 0 ? "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000" : "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000"}
+              src={index === 0 ? "lecture5.webp" : "lecture6.webp"}
               className="w-full h-full object-cover grayscale-[40%] opacity-40"
               alt="Architecture"
             />
@@ -110,9 +111,9 @@ export default function HomePropertyPro() {
               Home Property Consulting Company Limited
             </h1>
             <div className="flex items-center gap-8">
-              <button className="px-12 py-5 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all duration-500">
+              <Link to="/contact" className="px-12 py-5 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all duration-500">
                 Contact Us
-              </button>
+              </Link>
               <div className="hidden md:flex gap-4 items-center text-white/40">
                 <span className={index === 0 ? "text-white" : ""}>01</span>
                 <div className="w-12 h-px bg-white/20">

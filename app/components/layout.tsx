@@ -2,6 +2,37 @@ import { Outlet } from 'react-router'
 import Navbar from './navbar'
 import Footer from './footer'
 import { footerLinks, socialLinks } from '~/const/app'
+import type { Route } from './+types/layout';
+
+export function meta({ }: Route.MetaArgs) {
+  return [
+    {
+      title: "Home Property Consulting | Condo Specialists & Investment Experts",
+    },
+    {
+      name: "description",
+      content:
+        "โฮม พร็อพเพอร์ตี้ คอนซัลติ้ง ตัวแทนอสังหาริมทรัพย์ระดับแนวหน้า บริการรับฝากขาย-เช่า คอนโดแบบครบวงจร โดยทีมงาน Condo Specialists ประสบการณ์สูง เพื่อความคุ้มค่าของการลงทุน",
+    },
+    {
+      name: "keywords",
+      content: "Home Property Consulting, รับฝากขายคอนโด, เช่าคอนโด, ที่ปรึกษาอสังหาริมทรัพย์, Condo Specialists, ลงทุนคอนโด, คอนโดมือสอง",
+    },
+    // Open Graph for better social media sharing (Facebook/Line)
+    {
+      property: "og:title",
+      content: "Home Property Consulting | ที่ปรึกษาด้านการลงทุนและตัวแทนอสังหาฯ ครบวงจร",
+    },
+    {
+      property: "og:description",
+      content: "ไม่ใช่เพียงแค่ตัวแทนขาย แต่เราคือ Condo Specialists ที่พร้อมคัดสรรสิ่งที่ดีที่สุดให้กับนักลงทุนและผู้อยู่อาศัย",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+  ];
+}
 
 export default function layout() {
     return (

@@ -31,8 +31,10 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+    <div className="bg-[#FAF9F6] relative min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
+        <img src="/hero.jpg"
+              className='w-full h-screen'
+              alt="" />
       {/* 1. HERO SECTION */}
       <header className="pt-40 pb-20 px-8 border-b border-black/5">
         <div className="max-w-7xl mx-auto">
@@ -44,6 +46,7 @@ export default function ContactPage() {
             <h1 className="text-[10px] uppercase tracking-[0.5em] font-bold text-black/30 mb-6">Contact Us</h1>
             <h2 className="text-5xl md:text-8xl font-light tracking-tighter leading-[0.9] mb-12">
               Let’s discuss your <br /> 
+            
               <span className="italic text-black/20">future assets.</span>
             </h2>
           </motion.div>

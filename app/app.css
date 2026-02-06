@@ -19,7 +19,7 @@ body {
 
 
 .btn-primary {
-  @apply px-12 py-5 bg-(--primary-color) text-xs font-bold
+  @apply px-12 py-5 bg-(--bg-color) text-xs font-bold
    uppercase tracking-widest hover:text-white
-   text-white rounded-full border border-(--primary-color) transition-all duration-500;
+   text-white border border-(--bg-color) transition-all duration-500;
 }
