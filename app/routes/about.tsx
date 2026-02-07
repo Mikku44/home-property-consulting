@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Lightbulb, Target, ArrowDown } from 'lucide-react';
+import YoutubeShortsSection from '~/components/shortVideo';
 
 export default function AboutPage() {
   const values = [
@@ -23,7 +24,57 @@ export default function AboutPage() {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+      <div className="h-[100vh] relative overflow-hidden bg-[#0a0a0a]">
+        {/* 1. TEXT CONTENT - Refined for Authority */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-end">
+          <div className="max-w-[1440px] w-full mx-auto md:px-28 px-6 pb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="space-y-4"
+            >
+              {/* Label with Line - Classic Consultant Branding */}
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 bg-(--primary-color)"></div>
+                <span className="text-sm uppercase tracking-[0.4em] font-medium text-(--primary-color)">
+                  About Us
+                </span>
+              </div>
+
+              {/* Main Heading - Using Serifs and Spacing */}
+              <h1 className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-none">
+                เกี่ยวกับ <br />
+                <div className="text-5xl opacity-90 tracking-normal  w-[600px]">
+                  Home Property Consulting Company Limited
+                  </div>
+              </h1>
+
+              {/* Trust Subtext - New element for "Guru" feel */}
+              <p className="max-w-md text-white/40 text-sm font-light leading-relaxed pt-4 border-t border-white/10 mt-8">
+                ความเชี่ยวชาญที่ส่งต่อจากรุ่นสู่รุ่น เพื่อยกระดับมาตรฐาน <br />
+                การลงทุนอสังหาริมทรัพย์ในประเทศไทยให้ก้าวไกลกว่าที่เคย
+              </p>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* 2. GRADIENT MASK - Deeper and more professional */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0a0a0a] via-black/20 to-transparent"></div>
+
+        {/* 3. IMAGE COMPONENT - With subtle parallax motion */}
+        <motion.img
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 10, ease: "linear" }} // Slow "Ken Burns" effect
+          src="/about.jpg"
+          className='w-full h-full object-cover opacity-80'
+          alt="Home Property Academy Team and Heritage"
+        />
+
+        {/* 4. DESIGN ELEMENT - Floating vertical indicator */}
+        <div className="absolute right-12 bottom-0 h-1/3 w-[1px] bg-gradient-to-b from-transparent to-(--primary-color) hidden md:block opacity-50"></div>
+      </div>
       {/* 1. HERO SECTION - MISSION STATEMENT */}
       <header className="relative pt-48 pb-32 px-8 overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
@@ -34,7 +85,7 @@ export default function AboutPage() {
           >
             <h1 className="text-[10px] uppercase tracking-[0.5em] font-bold text-black/30 mb-8">About Home Property Consulting</h1>
             <h2 className="text-5xl md:text-[5rem] font-light tracking-tighter leading-[0.95] mb-12">
-              Expertise that <br /> 
+              Expertise that <br />
               <span className="italic text-black/20">Builds Trust.</span>
             </h2>
             <p className="text-xl md:text-2xl text-black/60 font-light max-w-3xl leading-relaxed italic">
@@ -42,7 +93,7 @@ export default function AboutPage() {
             </p>
           </motion.div>
         </div>
-        
+
         {/* Subtle Decorative Background Text */}
         <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 select-none pointer-events-none opacity-[0.02] hidden lg:block">
           <span className="text-[20rem] font-black tracking-tighter">EST. 2026</span>
@@ -54,23 +105,23 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">
           <div className="lg:col-span-5">
             <div className="aspect-[3/4] overflow-hidden ">
-               <img 
-                 src="trophy.webp" 
-                 alt="Professional consulting" 
-                 className="w-full h-full object-cover"
-               />
+              <img
+                src="trophy.webp"
+                alt="Professional consulting"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           <div className="lg:col-span-7 flex flex-col justify-center">
             <h3 className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/30 mb-8">Our Identity</h3>
             <div className="space-y-8 text-lg md:text-xl font-light leading-relaxed text-black/70">
               <p>
-                บริษัท โฮม พร็อพเพอร์ คอนซัลติ้ง จำกัด ดำเนินธุรกิจตัวแทนอสังหาริมทรัพย์ระดับแนวหน้า 
-                ที่มุ่งเน้นการให้บริการเป็นที่ปรึกษาด้านการลงทุนแบบครบวงจร 
+                บริษัท โฮม พร็อพเพอร์ คอนซัลติ้ง จำกัด ดำเนินธุรกิจตัวแทนอสังหาริมทรัพย์ระดับแนวหน้า
+                ที่มุ่งเน้นการให้บริการเป็นที่ปรึกษาด้านการลงทุนแบบครบวงจร
                 ครอบคลุมทั้งการแนะนำเรื่องซื้อ เช่า และรับฝากขาย-ปล่อยเช่า
               </p>
               <p>
-                ด้วยประสบการณ์ที่สั่งสมมายาวนานและทีมงานที่มีความเชี่ยวชาญสูง 
+                ด้วยประสบการณ์ที่สั่งสมมายาวนานและทีมงานที่มีความเชี่ยวชาญสูง
                 เราจึงไม่ใช่เพียงแค่ตัวแทนขาย แต่เราคือ <span className="text-black font-medium">"Condo Specialists"</span> ที่พร้อมคัดสรรสิ่งที่ดีที่สุดให้กับทั้งลูกค้าที่มองหาที่อยู่อาศัยและนักลงทุนที่ต้องการความคุ้มค่า
               </p>
             </div>
@@ -78,17 +129,19 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <YoutubeShortsSection />
+
       {/* 3. VALUES & PROMISE */}
       <section className="py-32 px-8 bg-[#121212] text-white">
         <div className="max-w-7xl mx-auto">
           <div className="mb-20 text-center">
-             <h4 className="text-[10px] uppercase tracking-[0.5em] font-bold mb-6 opacity-40">Our Professional Values</h4>
-             <h5 className="text-3xl md:text-5xl font-light tracking-tighter italic">ทุ่มเทคัดสรร เพื่อผลลัพธ์ที่ดีที่สุด</h5>
+            <h4 className="text-[10px] uppercase tracking-[0.5em] font-bold mb-6 opacity-40">Our Professional Values</h4>
+            <h5 className="text-3xl md:text-5xl font-light tracking-tighter italic">ทุ่มเทคัดสรร เพื่อผลลัพธ์ที่ดีที่สุด</h5>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {values.map((val, i) => (
-              <motion.div 
+              <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -113,12 +166,12 @@ export default function AboutPage() {
       <section className="py-40 px-8 text-center bg-[#FAF9F6]">
         <div className="max-w-4xl mx-auto">
           <h3 className="text-2xl md:text-4xl font-light tracking-tighter leading-tight mb-12">
-            “ที่นี่เราทุ่มเทคัดสรรอสังหาริมทรัพย์ <br /> 
+            “ที่นี่เราทุ่มเทคัดสรรอสังหาริมทรัพย์ <br />
             ให้ได้ตามที่ลูกค้าต้องการ... เพื่อความมั่นคงในอนาคตของคุณ”
           </h3>
           <div className="inline-flex flex-col items-center gap-4">
-             <div className="w-px h-20 bg-black/10"></div>
-             <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/30">Home Property Consulting</span>
+            <div className="w-px h-20 bg-black/10"></div>
+            <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/30">Home Property Consulting</span>
           </div>
         </div>
       </section>
@@ -126,8 +179,8 @@ export default function AboutPage() {
       {/* 5. MINIMAL CTA */}
       <div className="py-20 px-8 flex justify-center border-t border-black/5">
         <button className="group relative overflow-hidden px-16 py-6 bg-black text-white text-[10px] font-bold uppercase tracking-[0.3em]">
-           <span className="relative z-10">Get to Know Us Better</span>
-           <div className="absolute inset-0 bg-yellow-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+          <span className="relative z-10">Get to Know Us Better</span>
+          <div className="absolute inset-0 bg-yellow-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
         </button>
       </div>
     </div>

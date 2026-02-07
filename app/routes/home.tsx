@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  ArrowRight,
   Minus,
   ArrowUpRight,
-  Plus
+  ArrowRight,
 } from 'lucide-react';
 import { Link } from 'react-router';
+import VisionSection from './home/visionSection';
+import VisualCarousel from '~/components/imageSlider';
 
 // --- Types ---
 interface Service {
@@ -39,28 +40,28 @@ const SERVICES: Service[] = [
 ];
 
 
-  const reasons = [
-    {
-      title: "Direct Market Experience",
-      thaiTitle: "ประสบการณ์ตรงในตลาดอสังหาริมทรัพย์",
-      description: "ความเชี่ยวชาญที่กลั่นกรองจากหน้างานจริง ทำให้เรามองเห็นโอกาสและความเสี่ยงก่อนใคร"
-    },
-    {
-      title: "Dual Perspective",
-      thaiTitle: "เข้าใจทั้งมุม “เจ้าของทรัพย์” และ “นักลงทุน”",
-      description: "เราเชื่อมโยงความต้องการของทั้งสองฝั่ง เพื่อสร้างข้อตกลงที่ดีที่สุดสำหรับทุกฝ่าย"
-    },
-    {
-      title: "Total Transparency",
-      thaiTitle: "ทำงานโปร่งใส จริงใจ ดูแลเหมือนทรัพย์ของตัวเอง",
-      description: "ความเชื่อมั่นคือรากฐานของธุรกิจเรา เราดูแลทุกรายละเอียดด้วยมาตรฐานสูงสุด"
-    },
-    {
-      title: "Result-Driven",
-      thaiTitle: "มุ่งเน้นผลลัพธ์ที่จับต้องได้ ไม่ขายฝัน",
-      description: "ทุกคำแนะนำอ้างอิงจากข้อมูลและตัวเลขจริง เพื่อให้เป้าหมายของคุณสำเร็จอย่างเป็นรูปธรรม"
-    }
-  ];
+const reasons = [
+  {
+    title: "Direct Market Experience",
+    thaiTitle: "ประสบการณ์ตรงในตลาดอสังหาริมทรัพย์",
+    description: "ความเชี่ยวชาญที่กลั่นกรองจากหน้างานจริง ทำให้เรามองเห็นโอกาสและความเสี่ยงก่อนใคร"
+  },
+  {
+    title: "Dual Perspective",
+    thaiTitle: "เข้าใจทั้งมุม “เจ้าของทรัพย์” และ “นักลงทุน”",
+    description: "เราเชื่อมโยงความต้องการของทั้งสองฝั่ง เพื่อสร้างข้อตกลงที่ดีที่สุดสำหรับทุกฝ่าย"
+  },
+  {
+    title: "Total Transparency",
+    thaiTitle: "ทำงานโปร่งใส จริงใจ ดูแลเหมือนทรัพย์ของตัวเอง",
+    description: "ความเชื่อมั่นคือรากฐานของธุรกิจเรา เราดูแลทุกรายละเอียดด้วยมาตรฐานสูงสุด"
+  },
+  {
+    title: "Result-Driven",
+    thaiTitle: "มุ่งเน้นผลลัพธ์ที่จับต้องได้ ไม่ขายฝัน",
+    description: "ทุกคำแนะนำอ้างอิงจากข้อมูลและตัวเลขจริง เพื่อให้เป้าหมายของคุณสำเร็จอย่างเป็นรูปธรรม"
+  }
+];
 
 // --- Animation Variants ---
 const fadeUp = {
@@ -78,7 +79,7 @@ const imageTransition = {
 
 export default function HomePropertyPro() {
   const [index, setIndex] = useState(0);
-
+  const images = ["/lecture5.webp", "/lecture6.webp"];
   // Auto-advance hero slides
   useEffect(() => {
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % 2), 7000);
@@ -90,48 +91,97 @@ export default function HomePropertyPro() {
 
 
 
-      {/* 2. ARCHITECTURAL HERO SECTION */}
-      <header className="relative h-screen flex items-end px-8 pb-20 overflow-hidden bg-[#121212]">
+      <header className="relative h-screen w-full overflow-hidden bg-[#0A0A0A]">
+        {/* 1. BACKGROUND LAYER: Cinematic Ken Burns Effect */}
         <AnimatePresence mode="wait">
-          <motion.div key={index} {...imageTransition} className="absolute inset-0 z-0">
+          <motion.div
+            key={index}
+            initial={{ scale: 1.1, opacity: 0 }}
+            animate={{ scale: 1, opacity: 0.5 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute inset-0 z-0"
+          >
             <img
-              src={index === 0 ? "lecture5.webp" : "lecture6.webp"}
-              className="w-full h-full object-cover grayscale-[40%] opacity-40"
-              alt="Architecture"
+              src={images[index]}
+              className="w-full h-full object-cover grayscale-[30%] contrast-[1.1]"
+              alt="ที่ปรึกษาอสังหาริมทรัพย์มืออาชีพ"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-transparent to-black/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A] via-transparent to-transparent hidden md:block" />
           </motion.div>
         </AnimatePresence>
 
-        <div className="relative z-10 w-full max-w-7xl mx-auto">
-          <motion.div {...fadeUp} className="max-w-4xl">
-            <span className="text-white/40 uppercase tracking-[0.4em] text-[10px] font-bold mb-4 block">
-              EST. 2026 — Bangkok, TH
-            </span>
-            <h1 className="text-white text-5xl md:text-[clamp(3rem,8vw,6rem)] leading-[0.95] font-light tracking-tighter mb-10">
-              Home Property Consulting Company Limited
-            </h1>
-            <div className="flex items-center gap-8">
-              <Link to="/contact" className="px-12 py-5 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all duration-500">
-                Contact Us
-              </Link>
-              <div className="hidden md:flex gap-4 items-center text-white/40">
-                <span className={index === 0 ? "text-white" : ""}>01</span>
-                <div className="w-12 h-px bg-white/20">
+        {/* 2. CONTENT LAYER */}
+        <div className="relative z-10 h-full w-full max-w-[1440px] mx-auto px-8 md:px-20 flex flex-col justify-end pb-24">
+          <div className="grid grid-cols-1 lg:grid-cols-12 items-end gap-12">
+
+            {/* Left Side: Branding & Title */}
+            <div className="lg:col-span-8">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <div className="flex items-center gap-4 mb-8">
+                  <span className="h-px w-12 bg-white/30" />
+                  <span className="text-white/40 uppercase tracking-[0.5em] text-[10px] font-bold">
+                    กรุงเทพมหานคร, ประเทศไทย
+                  </span>
+                </div>
+
+                <h1 className="text-white text-6xl md:text-[90px] leading-[1.1] font-light tracking-tighter mb-12">
+                  ยกระดับ <br />
+                  <span className="italic text-white/20">มูลค่าอสังหาริมทรัพย์</span>
+                </h1>
+
+                <div className="flex flex-wrap items-center gap-10">
+                  <Link
+                    to="/contact"
+                    className="group relative flex items-center gap-4 bg-white px-10 py-5 overflow-hidden transition-all duration-500"
+                  >
+                    <div className="absolute inset-0 bg-black translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
+                    <span className="relative z-10 text-black text-[12px] font-bold uppercase tracking-[0.1em] group-hover:text-white transition-colors">
+                      เริ่มรับคำปรึกษา
+                    </span>
+                    <ArrowRight className="relative z-10 w-4 h-4 text-black group-hover:text-white group-hover:translate-x-1 transition-all" />
+                  </Link>
+
+                  <div className="hidden sm:block">
+                    <p className="text-white/30 text-[10px] uppercase tracking-widest font-bold mb-1">ความเชี่ยวชาญของเรา</p>
+                    <p className="text-white/60 text-sm font-light italic">การลงทุนและบริหารจัดการทรัพย์สิน</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Right Side: Navigation & Progress */}
+            <div className="lg:col-span-4 flex flex-col items-end gap-8">
+              <div className="flex items-center gap-6 text-white/20 text-[10px] font-bold uppercase tracking-[0.4em]">
+                <span className={index === 0 ? "text-white" : "transition-colors duration-500"}>01</span>
+                <div className="w-32 h-[1px] bg-white/10 relative overflow-hidden">
                   <motion.div
-                    className="h-full bg-white"
-                    initial={{ width: 0 }}
-                    animate={{ width: "100%" }}
                     key={index}
+                    initial={{ x: "-100%" }}
+                    animate={{ x: "0%" }}
                     transition={{ duration: 7, ease: "linear" }}
+                    className="absolute inset-0 bg-white"
                   />
                 </div>
-                <span className={index === 1 ? "text-white" : ""}>02</span>
+                <span className={index === 1 ? "text-white" : "transition-colors duration-500"}>02</span>
               </div>
             </div>
-          </motion.div>
+
+          </div>
+        </div>
+
+        {/* Decorative Side Label */}
+        <div className="absolute right-10 top-1/2 -translate-y-1/2 hidden xl:block">
+          <p className="text-white/5 text-[10px] uppercase tracking-[1em] rotate-90 origin-center whitespace-nowrap font-bold">
+            Home Property Consulting
+          </p>
         </div>
       </header>
-
       {/* 3. THE "WHY" SECTION - TYPOGRAPHY FOCUS */}
       <section className="py-32 px-8 border-b border-black/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -229,10 +279,24 @@ export default function HomePropertyPro() {
 
           </div>
         </div>
+
       </section>
+
+      <VisualCarousel slides={[
+        { image: "/award.jpg" },
+        { image: "/award2.jpg" },
+        { image: "/award3.jpg" },
+        { image: "/award4.jpg" },
+        { image: "/award5.jpg" },
+        { image: "/award6.jpg" },
+        { image: "/trophy.webp" },
+      ]} />
+
+      <VisionSection />
 
       {/* 5. INVESTMENT HIGHLIGHT - CLEAN CALLOUT */}
       <section className="bg-black py-40 px-8 text-white text-center overflow-hidden relative">
+        <img src="/award.jpg" className='w-full h-full object-cover absolute inset-0 opacity-50' />
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -244,9 +308,12 @@ export default function HomePropertyPro() {
           <h3 className="text-4xl md:text-6xl font-light tracking-tighter leading-[1.1] mb-16">
             เพราะทุกการลงทุนอสังหาฯ <br /> ต้องมี <span className="italic text-(--primary-color) ">Strategy.</span>
           </h3>
-          <button className="group inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em]">
+          <Link
+            target='_blank'
+            to={"https://lin.ee/aHn58W1"}
+            className="group inline-flex items-center gap-4 text-xs font-bold uppercase tracking-[0.3em]">
             ร่วมลงทุนกับเรา <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-          </button>
+          </Link>
         </motion.div>
         {/* Subtle geometric background accent */}
         <div className="absolute inset-0 opacity-10 pointer-events-none">

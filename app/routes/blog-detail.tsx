@@ -1,14 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  ArrowLeft, 
-  Share2, 
-  Clock, 
-  Calendar, 
+  ArrowLeft,  
   ChevronRight,
-  Facebook,
-  Twitter,
-  Link as LinkIcon
+  Link as LinkIcon,
+  Share2
 } from 'lucide-react';
 
 export default function BlogDetailPage() {
@@ -21,6 +16,29 @@ export default function BlogDetailPage() {
     author: "Investment Team",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000",
   };
+
+  const handleShare = async () => {
+  const shareData = {
+    title: "บทความจาก Home Property Consulting",
+    text: "ตรวจสอบบทความที่น่าสนใจจาก Home Property Academy",
+    url: window.location.href, // This gets the current blog post URL
+  };
+
+  try {
+    // Check if browser supports native sharing (Mobile/Safari)
+    if (navigator.share) {
+      await navigator.share(shareData);
+    } else {
+      // Fallback: Copy to Clipboard (Desktop/Chrome)
+      await navigator.clipboard.writeText(window.location.href);
+      
+      // Trigger a custom toast (I'll show you how below)
+      alert("คัดลอกลิงก์เรียบร้อยแล้ว!"); 
+    }
+  } catch (err) {
+    console.log("Error sharing:", err);
+  }
+};
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
@@ -64,7 +82,9 @@ export default function BlogDetailPage() {
                 </div>
               </div>
               <div className="flex gap-4">
-                <button className="p-2 hover:bg-black hover:text-white rounded-full transition-all border border-black/5">
+                <button
+                onClick={handleShare}
+                className="p-2 hover:bg-black hover:text-white rounded-full transition-all border border-black/5">
                   <Share2 className="w-4 h-4" />
                 </button>
               </div>

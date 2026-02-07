@@ -1,3 +1,5 @@
+import { FaFacebook, FaYoutube } from "react-icons/fa";
+
 export const footerLinks = [
   {
     title: "บริการของเรา",
@@ -20,8 +22,25 @@ export const footerLinks = [
 
 
 
- export  const socialLinks = [
-    { label: "Twitter", href: "https://twitter.com", icon: "𝕏" },
-    { label: "LinkedIn", href: "https://linkedin.com", icon: "in" },
-  
-  ];
+
+
+export const SOCIAL_LINKS = [
+  { 
+    Icon: FaFacebook, 
+    href: "https://www.facebook.com/HomePropertyAcademy/",
+    label: "Facebook"
+  },
+  { 
+    Icon: FaYoutube, 
+    href: "https://www.youtube.com/@homepropertyconsulting",
+    label: "YouTube"
+  }
+];
+
+export const APP_MENU = [
+  { label: "หน้าแรก", href: "/" },
+  { label: "บริการของเรา", href: "/services" },
+  { label: "บทความ", href: "/blog" },
+  { label: "เกี่ยวกับเรา", href: "/about" },
+  { label: "ติดต่อ", href: "/contact" }
+]

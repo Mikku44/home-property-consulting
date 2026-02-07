@@ -121,7 +121,7 @@ export default function Carousel({
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.8 }}
-                className="text-6xl font-light text-white mb-6 leading-[0.8]"
+                className="text-3xl font-light text-white mb-6 leading-[0.8]"
               >
                 {items[slideIndex].title}
               </motion.h1>

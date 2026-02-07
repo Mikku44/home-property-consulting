@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Search, Filter } from 'lucide-react';
+import { Link } from 'react-router';
 
 // --- Types ---
 interface BlogPost {
@@ -9,6 +10,7 @@ interface BlogPost {
   date: string;
   title: string;
   excerpt: string;
+  slug: string;
   image: string;
   readTime: string;
 }
@@ -17,6 +19,7 @@ interface BlogPost {
 const POSTS: BlogPost[] = [
   {
     id: "01",
+    slug: "condo-investment-strategies-2026-yield-analysis",
     category: "Investment",
     date: "Feb 05, 2026",
     readTime: "5 min",
@@ -26,6 +29,7 @@ const POSTS: BlogPost[] = [
   },
   {
     id: "02",
+    slug: "5-common-landlord-mistakes-rental-management",
     category: "Property Management",
     date: "Jan 28, 2026",
     readTime: "4 min",
@@ -35,22 +39,107 @@ const POSTS: BlogPost[] = [
   },
   {
     id: "03",
+    slug: "thailand-property-tax-updates-2026",
     category: "Legal & Tax",
     date: "Jan 15, 2026",
     readTime: "7 min",
-    title: "อัปเดตภาษีที่ดินและสิ่งปลูกส่งปีล่าสุด ที่นักลงทุนควรรู้",
+    title: "อัปเดตภาษีที่ดินและสิ่งปลูกสร้างปีล่าสุด ที่นักลงทุนควรรู้",
     excerpt: "สรุปรายละเอียดค่าธรรมเนียมการโอน ภาษีธุรกิจเฉพาะ และวิธีวางแผนภาษีอสังหาริมทรัพย์ให้ถูกต้องตามกฎหมาย...",
     image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1000"
+  },
+  {
+    id: "04",
+    slug: "luxury-wellness-residence-trends-2026",
+    category: "Market Trends",
+    date: "Feb 07, 2026",
+    readTime: "6 min",
+    title: "เทรนด์ Wellness Residence: เมื่อบ้านไม่ได้เป็นเพียงที่พัก แต่คือ 'สินทรัพย์เพื่อสุขภาพ'",
+    excerpt: "ทำไมอสังหาฯ แนวสุขภาพถึงมีมูลค่าพุ่งสูงขึ้นอย่างรวดเร็วในปีนี้ และเจาะลึกทำเลรอบกรุงเทพฯ ที่น่าจับตามองสำหรับนักลงทุนสายเน้นคุณภาพชีวิต...",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000"
   }
 ];
-
 export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState('All');
-  const categories = ['All', 'Investment', 'Management', 'Legal', 'Market Update'];
+  // const [activeCategory, setActiveCategory] = useState('All');
+  // const categories = ['All', 'Investment', 'Management', 'Legal', 'Market Update'];
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+      <div className="h-[100vh] relative overflow-hidden bg-(--bg-color)">
+        {/* 1. ANIMATED TEXT CONTENT */}
+        <div className="absolute inset-0 z-20 flex flex-col justify-end">
+          <div className="max-w-[1440px] w-full mx-auto md:px-28 px-6 pb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
+            >
+              {/* Decorative Background Text (Floating Knowledge) */}
+              <span className="absolute -top-16 left-0 text-[12vw] font-serif italic text-white/[0.03] whitespace-nowrap pointer-events-none select-none">
+                The Archive
+              </span>
+
+              <div className="space-y-2">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: 40 }}
+                  transition={{ delay: 0.5, duration: 0.8 }}
+                  className="h-[2px] bg-(--primary-color) mb-4"
+                />
+
+                <h2 className="text-xl md:text-2xl font-medium tracking-[0.3em] text-gray-400 uppercase">
+                  Knowledge
+                </h2>
+
+                <h1 className="text-6xl md:text-[100px] font-light text-white tracking-tighter leading-none">
+                  บทความ <br />
+                  <span className="italic scale-75 text-white/80">น่ารู้และสาระสำคัญ</span>
+                </h1>
+              </div>
+
+              {/* Categories Tag Cloud - Modern Touch */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1 }}
+                className="flex gap-4 mt-10"
+              >
+                {['Market Insight', 'Investment', 'Legal', 'Lifestyle'].map((tag) => (
+                  <span key={tag} className="text-[9px] uppercase tracking-widest text-white/30 border border-white/10 px-3 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </motion.div>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* 2. ATMOSPHERIC GRADIENT */}
+        {/* Deep gradient for text readability and cinematic exit to page content */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-(--bg-color) via-black/40 to-black/10"></div>
+
+        {/* 3. PARALLAX IMAGE COMPONENT */}
+        <motion.div
+          initial={{ scale: 1.15 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 2.5, ease: [0.16, 1, 0.3, 1] }}
+          className="w-full h-full"
+        >
+          <img
+            src="/blog.avif"
+            className='w-full h-full object-cover filter brightness-[0.7] contrast-[1.1]'
+            alt="Real Estate Knowledge Base"
+          />
+        </motion.div>
+
+        {/* 4. DESIGN ELEMENT: Vertical Section Indicator */}
+        <div className="absolute left-10 top-1/2 -translate-y-1/2 hidden md:flex flex-col items-center gap-6 opacity-20">
+          <div className="w-[1px] h-20 bg-white"></div>
+          <span className="text-[10px] uppercase tracking-[0.5em] -rotate-90 origin-center whitespace-nowrap text-white">
+            Scroll to Read
+          </span>
+        </div>
+      </div>
       {/* 1. BLOG HEADER & FILTER */}
       <header className="pt-40 pb-16 px-8 border-b border-black/5">
         <div className="max-w-7xl mx-auto">
@@ -61,24 +150,14 @@ export default function BlogPage() {
           >
             <h1 className="text-[10px] uppercase tracking-[0.5em] font-bold text-black/30 mb-6">Journal & Insights</h1>
             <h2 className="text-5xl md:text-7xl font-light tracking-tighter mb-12">Knowledge <br /> <span className="italic text-black/20">for Asset Growth.</span></h2>
-            
+
             <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-8">
-              <div className="flex flex-wrap gap-8 text-[10px] uppercase tracking-[0.2em] font-bold">
-                {categories.map((cat) => (
-                  <button 
-                    key={cat}
-                    onClick={() => setActiveCategory(cat)}
-                    className={`transition-colors ${activeCategory === cat ? 'text-black border-b border-black pb-1' : 'text-black/30 hover:text-black'}`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
+
               <div className="relative w-full md:w-64 group">
                 <Search className="absolute left-0 top-1/2 -translate-y-1/2 w-4 h-4 text-black/20 group-focus-within:text-black transition-colors" />
-                <input 
-                  type="text" 
-                  placeholder="SEARCH INSIGHTS..." 
+                <input
+                  type="text"
+                  placeholder="SEARCH INSIGHTS..."
                   className="w-full bg-transparent border-b border-black/10 py-2 pl-8 text-[10px] uppercase tracking-widest focus:outline-none focus:border-black transition-all"
                 />
               </div>
@@ -87,37 +166,50 @@ export default function BlogPage() {
         </div>
       </header>
 
-      {/* 2. FEATURED ARTICLE (Full Width) */}
       <section className="px-8 py-20">
         <div className="max-w-7xl mx-auto">
-          <motion.article 
+          <motion.article
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="group cursor-pointer grid grid-cols-1 md:grid-cols-12 gap-12 items-center"
+            className="group grid grid-cols-1 md:grid-cols-12 gap-12 items-center"
           >
             <div className="md:col-span-7 overflow-hidden bg-black">
-              <img 
-                src={POSTS[0].image} 
-                alt="Featured" 
-                className="w-full aspect-[16/9] object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000 grayscale-[50%] group-hover:grayscale-0"
-              />
+              {/* Wrap Image in Link */}
+              <Link to={`/blog/${POSTS[0].slug}`}>
+                <img
+                  src={POSTS[0].image}
+                  alt="Featured"
+                  className="w-full aspect-[16/9] object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000 grayscale-[50%] group-hover:grayscale-0 cursor-pointer"
+                />
+              </Link>
             </div>
+
             <div className="md:col-span-5">
               <div className="flex items-center gap-4 mb-6">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-black/40">{POSTS[0].category}</span>
                 <span className="w-8 h-px bg-black/10"></span>
                 <span className="text-[10px] font-bold uppercase tracking-widest text-black/40">{POSTS[0].date}</span>
               </div>
-              <h3 className="text-3xl md:text-4xl font-light tracking-tighter leading-tight mb-6 group-hover:opacity-60 transition-opacity">
-                {POSTS[0].title}
-              </h3>
+
+              {/* Wrap Title in Link */}
+              <Link to={`/blog/${POSTS[0].slug}`}>
+                <h3 className="text-3xl md:text-4xl font-light tracking-tighter leading-tight mb-6 group-hover:opacity-60 transition-opacity cursor-pointer">
+                  {POSTS[0].title}
+                </h3>
+              </Link>
+
               <p className="text-sm text-black/50 leading-relaxed font-light mb-8">
                 {POSTS[0].excerpt}
               </p>
-              <div className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest">
+
+              {/* The Action Link */}
+              <Link
+                to={`/blog/${POSTS[0].slug}`}
+                className="flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest hover:opacity-50 transition-all w-fit"
+              >
                 Read Article <ArrowRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
-              </div>
+              </Link>
             </div>
           </motion.article>
         </div>
@@ -127,36 +219,46 @@ export default function BlogPage() {
       <section className="px-8 pb-32">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-x-12 gap-y-20 border-t border-black/5 pt-20">
-            {POSTS.slice(1).concat(POSTS[0]).map((post, i) => (
-              <motion.article 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group cursor-pointer"
-              >
-                <div className="aspect-[4/5] bg-black overflow-hidden mb-8">
-                  <img 
-                    src={post.image} 
-                    alt={post.title} 
-                    className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale-[100%] group-hover:grayscale-0"
-                  />
-                </div>
-                <div className="flex justify-between items-center mb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-black/30">
-                  <span>{post.category}</span>
-                  <span>{post.readTime}</span>
-                </div>
-                <h4 className="text-xl font-light tracking-tighter leading-snug mb-4 group-hover:text-black/60 transition-colors">
-                  {post.title}
-                </h4>
-                <div className="w-0 group-hover:w-full h-px bg-black/20 transition-all duration-500"></div>
-              </motion.article>
-            ))}
+            {POSTS.slice(1).map((post, i) => {
+              const postSlug = post.slug;
+
+              return (
+                <motion.article
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group"
+                >
+                  <Link to={`/blog/${postSlug}`}>
+                    <div className="aspect-[4/5] bg-black overflow-hidden mb-8 cursor-pointer">
+                      <img
+                        src={post.image}
+                        alt={post.title}
+                        className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale-[100%] group-hover:grayscale-0"
+                      />
+                    </div>
+                  </Link>
+
+                  <div className="flex justify-between items-center mb-4 text-[9px] font-bold uppercase tracking-[0.2em] text-black/30">
+                    <span>{post.category}</span>
+                    <span>{post.readTime}</span>
+                  </div>
+
+                  <Link to={`/blog/${postSlug}`}>
+                    <h4 className="text-xl font-light tracking-tighter leading-snug mb-4 group-hover:text-black/60 transition-colors cursor-pointer">
+                      {post.title}
+                    </h4>
+                  </Link>
+
+                  <div className="w-0 group-hover:w-full h-px bg-black/20 transition-all duration-500"></div>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
-
       {/* 4. NEWSLETTER - MINIMALIST */}
       <section className="py-32 px-8 bg-[#121212] text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -165,9 +267,9 @@ export default function BlogPage() {
             รับบทวิเคราะห์ตลาดรายสัปดาห์ <br /> ส่งตรงถึงอีเมลของคุณ
           </h3>
           <form className="flex flex-col md:flex-row gap-4 max-w-lg mx-auto">
-            <input 
-              type="email" 
-              placeholder="YOUR EMAIL ADDRESS" 
+            <input
+              type="email"
+              placeholder="YOUR EMAIL ADDRESS"
               className="flex-1 bg-white/5 border border-white/10 px-6 py-4 text-[10px] tracking-widest focus:outline-none focus:border-white/40 transition-all"
             />
             <button className="px-10 py-4 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-transparent hover:text-white border border-white transition-all">

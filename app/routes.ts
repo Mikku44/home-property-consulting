@@ -7,7 +7,7 @@ export default [
         index("routes/home.tsx"),
         route("/services","routes/services.tsx"),
         route("/blog","routes/blog.tsx"),
-        route("/blog/:id","routes/blog-detail.tsx"),
+        route("/blog/:slug","routes/blog-detail.tsx"),
         route("/about","routes/about.tsx"),
         route("/contact","routes/contact.tsx"),
     ])

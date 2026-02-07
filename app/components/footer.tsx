@@ -1,13 +1,12 @@
-import React from 'react';
-import { 
-  Facebook, 
-  Instagram, 
-  Linkedin, 
-  ArrowUpRight, 
-  MapPin, 
-  Phone, 
-  Mail 
+import {motion} from "framer-motion";
+import {
+
+  ArrowUpRight,
+  MapPin,
+  Phone,
+  Mail
 } from 'lucide-react';
+import { APP_MENU, SOCIAL_LINKS } from '~/const/app';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -15,9 +14,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#121212] text-white pt-24 pb-12 px-6 md:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto relative z-10">
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 pb-20 border-b border-white/5">
-          
+
           {/* Brand Column */}
           <div className="lg:col-span-5">
             <div className="text-2xl font-medium tracking-tighter mb-6 italic">
@@ -28,26 +27,40 @@ export default function Footer() {
               ที่ปรึกษาอสังหาริมทรัพย์ครบวงจร ยกระดับการลงทุนและการอยู่อาศัยของคุณด้วยประสบการณ์ระดับมืออาชีพ
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Linkedin].map((Icon, i) => (
-                <a key={i} href="#" className="p-3 border border-white/10 rounded-full hover:bg-white hover:text-black transition-all">
+              {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  // Motion properties for the "Formal" feel
+                  whileHover={{ scale: 1.1, backgroundColor: "#ffffff", color: "#000000" }}
+                  whileTap={{ scale: 0.95 }}
+                  className="p-3 border border-white/10 rounded-full text-white transition-colors duration-300 flex items-center justify-center"
+                >
                   <Icon className="w-4 h-4" />
-                </a>
+                </motion.a>
               ))}
             </div>
           </div>
 
           {/* Links Columns */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-4">
+          <div className="lg:col-span-2 grid gap-4">
             <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30 mb-8">Navigation</h4>
               <ul className="space-y-4 text-sm font-light text-white/60">
-                <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
+                {APP_MENU.map((item) =>
+                  <li key={item.label}><a href={item.href} className="hover:text-white transition-colors">
+                    {item.label}
+                  </a></li>)
+                }
+                {/* <li><a href="/" className="hover:text-white transition-colors">Home</a></li>
                 <li><a href="/services" className="hover:text-white transition-colors">Services</a></li>
                 <li><a href="/about" className="hover:text-white transition-colors">About Us</a></li>
-                <li><a href="/blog" className="hover:text-white transition-colors">Journal</a></li>
+                <li><a href="/blog" className="hover:text-white transition-colors">Journal</a></li> */}
               </ul>
             </div>
-            <div>
+            {/* <div>
               <h4 className="text-[10px] uppercase tracking-[0.3em] font-bold text-white/30 mb-8">Expertise</h4>
               <ul className="space-y-4 text-sm font-light text-white/60">
                 <li><a href="#" className="hover:text-white transition-colors">Investment</a></li>
@@ -55,7 +68,7 @@ export default function Footer() {
                 <li><a href="#" className="hover:text-white transition-colors">Legal</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Marketing</a></li>
               </ul>
-            </div>
+            </div> */}
           </div>
 
           {/* Contact Column - Fixed Overflow */}
@@ -88,11 +101,11 @@ export default function Footer() {
           <div className="text-[10px] uppercase tracking-[0.2em] font-bold text-white/20 text-center md:text-left">
             © {currentYear} Home Property Consulting.
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-6 text-[10px] uppercase tracking-[0.2em] font-bold text-white/20">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms</a>
-            <button 
+            {/* <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms</a> */}
+            <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="flex items-center gap-2 text-white/40 hover:text-white transition-colors md:border-l md:border-white/10 md:pl-6"
             >

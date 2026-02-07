@@ -1,136 +1,173 @@
 import React, { useState, useEffect } from 'react';
 
+import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router';
+
 interface NavLink {
   label: string;
   href: string;
-  icon?: React.ReactNode;
 }
 
 interface NavbarProps {
-  logo?: string | React.ReactNode;
+  logo?: string;
   brandName?: string;
   links?: NavLink[];
   rightContent?: React.ReactNode;
-  textColor?: string;
-  className?: string;
-  sticky?: boolean;
-  onLogoClick?: () => void;
-  // New prop to customize the scrolled background color
-  scrolledBgColor?: string; 
 }
 
 export default function Navbar({
-  logo,
-  brandName = "Brand",
+  logo = "/logo.png", // Path to your professional logo
+  brandName = "Home Property",
   links = [],
-  rightContent,
-  className = "",
-  textColor = "text-gray-900",
-  sticky = true, // Usually desired if changing bg on scroll
-  onLogoClick,
-  scrolledBgColor = "bg-white/95 backdrop-blur-md"
+  rightContent
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Trigger change after scrolling 20 pixels
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const stickyClass = sticky ? "fixed top-0 left-0 z-50 transition-all duration-300" : "";
-  const backgroundClass = isScrolled ? scrolledBgColor : "bg-transparent";
-  const shadowClass = isScrolled ? "shadow-md" : "";
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    document.body.style.overflow = 'unset';
+  }, [location]);
+
+  const toggleMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+    document.body.style.overflow = mobileMenuOpen ? 'unset' : 'hidden';
+  };
 
   return (
-    <header className={`w-full py-2 px-4 ${stickyClass} ${backgroundClass} ${className} ${textColor} ${shadowClass}`}>
-      <nav className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Logo / Brand */}
-        <div
-          className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity"
-          onClick={onLogoClick}
+    <header 
+      className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
+        isScrolled 
+          ? "py-3 bg-[#080e1c]/80 backdrop-blur-xl " 
+          : "py-6 bg-transparent"
+      }`}
+    >
+      <nav className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between" aria-label="Main Navigation">
+        
+        {/* SEO-Friendly Logo Section */}
+        <Link 
+          to="/" 
+          className="flex items-center gap-3 z-[110] group"
+          aria-label="Home Property Consulting - Return to Home"
         >
-          {logo && (
-            <div className="flex-shrink-0">
-              {typeof logo === 'string' ? (
-                <img src={logo} alt={brandName} className="h-16 rounded-full w-auto" />
-              ) : (
-                logo
-              )}
-            </div>
-          )}
-          {brandName && <span className="text-lg font-bold">{brandName}</span>}
+          <motion.div 
+            animate={{ scale: isScrolled ? 0.9 : 1 }}
+            className="relative w-10 h-10 flex items-center justify-center"
+          >
+            <img src={logo} alt="Home Property Logo" className="w-full h-full object-contain" />
+          </motion.div>
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-tighter text-white leading-none">
+              {brandName}
+            </span>
+            <span className="text-[8px] uppercase tracking-[0.3em] text-[var(--primary-color)] font-bold mt-1 opacity-80">
+              Consulting
+            </span>
+          </div>
+        </Link>
+
+        {/* Desktop Menu - Semantic & Clean */}
+        <div className="hidden lg:flex items-center gap-10">
+          <ul className="flex items-center gap-8 list-none">
+            {links.map((link) => {
+              const isActive = location.pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    to={link.href}
+                    className={`relative text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-300 ${
+                      isActive ? "text-[var(--primary-color)]" : "text-white/70 hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                    {isActive && (
+                      <motion.div 
+                        layoutId="nav-underline"
+                        className="absolute -bottom-1 left-0 w-full h-[1px] bg-[var(--primary-color)]"
+                      />
+                    )}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+          
+          <div className="h-4 w-[1px] bg-white/10 mx-2" />
+          
+          <div className="flex items-center">
+            {rightContent}
+          </div>
         </div>
 
-        {/* Desktop Navigation Links */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link, index) => (
-            <a
-              key={index}
-              href={link.href}
-              className="flex items-center gap-2 hover:opacity-70 transition-opacity font-medium"
-            >
-              {link.icon && <span>{link.icon}</span>}
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Right Content */}
-        <div className="hidden md:flex items-center gap-4">
-          {rightContent}
-        </div>
-
-        {/* Mobile Menu Button */}
+        {/* Mobile Toggle - Improved UI */}
         <button
-          className="md:hidden flex flex-col gap-1.5 z-50"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
+          className="lg:hidden flex flex-col justify-center items-end w-8 h-8 z-[110] relative"
+          onClick={toggleMenu}
+          aria-expanded={mobileMenuOpen}
+          aria-label="Menu"
         >
-          <span className={`w-6 h-0.5 ${textColor} transition-all duration-300`} style={{
-            transform: mobileMenuOpen ? 'rotate(45deg) translateY(10px)' : 'none'
-          }} />
-          <span className={`w-6 h-0.5 ${textColor} transition-all duration-300`} style={{
-            opacity: mobileMenuOpen ? 0 : 1
-          }} />
-          <span className={`w-6 h-0.5 ${textColor} transition-all duration-300`} style={{
-            transform: mobileMenuOpen ? 'rotate(-45deg) translateY(-10px)' : 'none'
-          }} />
+          <span className={`h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'w-8 rotate-45 translate-y-[1px]' : 'w-8 mb-1.5'}`} />
+          <span className={`h-[1.5px] bg-white transition-all duration-300 ${mobileMenuOpen ? 'w-8 -rotate-45 translate-y-0' : 'w-5'}`} />
         </button>
       </nav>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4 bg-white px-4">
-          <div className="flex flex-col gap-4">
-            {links.map((link, index) => (
-              <a
-                key={index}
-                href={link.href}
-                className="flex items-center gap-2 hover:opacity-70 transition-opacity"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {link.icon && <span>{link.icon}</span>}
-                {link.label}
-              </a>
-            ))}
-            {rightContent && (
-              <div className="border-t border-gray-200 pt-4 mt-2">
-                {rightContent}
+      {/* Premium Mobile Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div 
+            initial={{ opacity: 0, x: "100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "100%" }}
+            transition={{ type: "spring", damping: 25, stiffness: 200 }}
+            className="fixed inset-0 bg-[#080e1c] z-[100] lg:hidden"
+          >
+            <div className="flex flex-col h-full pt-32 px-10">
+              <span className="text-[var(--primary-color)] text-[10px] font-bold tracking-[0.5em] uppercase mb-12 opacity-50">
+                Navigation
+              </span>
+              
+              <div className="flex flex-col space-y-8">
+                {links.map((link, index) => {
+                   const isActive = location.pathname === link.href;
+                  return (
+                  <motion.div
+                    key={link.href}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.1 * index }}
+                  >
+                    <Link
+                      to={link.href}
+                      className={`text-4xl md:text-6xl font-light ${isActive ? "text-(--primary-color)" :"text-white"} tracking-tighter hover:italic transition-all inline-block`}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                )})}
               </div>
-            )}
-          </div>
-        </div>
-      )}
+
+              <div className="mt-auto pb-12 flex flex-col gap-6">
+                <div className="h-[1px] w-full bg-white/5" />
+                <div className="flex justify-between items-end">
+                  <div className="text-[10px] uppercase tracking-widest text-white/30 leading-loose">
+                    <p>© 2026 Home Property Consulting</p>
+                    <p>Bangkok, Thailand</p>
+                  </div>
+                  {rightContent}
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

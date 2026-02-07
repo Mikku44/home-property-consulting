@@ -1,8 +1,10 @@
-import { Outlet } from 'react-router'
+import { Link, Outlet } from 'react-router'
 import Navbar from './navbar'
 import Footer from './footer'
-import { footerLinks, socialLinks } from '~/const/app'
+import { APP_MENU, } from '~/const/app'
 import type { Route } from './+types/layout';
+import FloatingContact from './FloatingButton';
+import { ArrowRight } from 'lucide-react';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -35,35 +37,38 @@ export function meta({ }: Route.MetaArgs) {
 }
 
 export default function layout() {
-    return (
-        <main>
+  return (
+    <main>
 
-            <Navbar
-                logo="logo-black.jpg"
-                brandName="HPCCL"
-                links={[
-                    { label: "หน้าแรก", href: "/" },
-                    { label: "บริการของเรา", href: "/services" },
-                    { label: "บทความ", href: "/blog" },
-                    { label: "เกี่ยวกับเรา", href: "/about" },
-                    { label: "ติดต่อ", href: "/contact" }
-                ]}
-                className='fixed top-0 z-10 bg-transparent shadow-none'
-                textColor="text-(--secondary-color)"
-                rightContent={
-                    <div className="flex gap-3">
+      <Navbar
+        logo="/logo-black.jpg"
+        brandName="HPCCL"
+        links={APP_MENU}
+        onLogoClick={() => window.location.href = "/"}
+        className='fixed top-0 z-10'
 
-                        <button className="px-4 py-2 btn-primary">
-                            Get Started
-                        </button>
-                    </div>
-                }
-                // backgroundColor="bg-gray-50"
-                sticky={true}
-            />
+        rightContent={
+          <div className="flex gap-3">
 
-            <Outlet />
-            <Footer/>
-        </main>
-    )
+            <Link
+              to="/contact"
+              className="group relative flex items-center gap-4 bg-white px-10 py-5 overflow-hidden transition-all duration-500"
+            >
+              <div className="absolute inset-0 bg-black translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
+              <span className="relative z-10 text-black text-[12px] font-bold uppercase tracking-[0.1em] group-hover:text-white transition-colors">
+                รับคำปรึกษา
+              </span>
+              <ArrowRight className="relative z-10 w-4 h-4 text-black group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </Link>
+          </div>
+        }
+        // backgroundColor="bg-gray-50"
+        sticky={true}
+      />
+      <FloatingContact />
+
+      <Outlet />
+      <Footer />
+    </main>
+  )
 }
