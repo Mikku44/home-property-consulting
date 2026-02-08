@@ -55,17 +55,17 @@ export default function Navbar({
         {/* SEO-Friendly Logo Section */}
         <Link 
           to="/" 
-          className="flex items-center gap-3 z-[110] group"
+          className="flex items-start gap-3 z-[110] group"
           aria-label="Home Property Consulting - Return to Home"
         >
           <motion.div 
             animate={{ scale: isScrolled ? 0.9 : 1 }}
-            className="relative w-10 h-10 flex items-center justify-center"
+            className="relative w-10 h-10 flex items-start justify-center"
           >
-            <img src={logo} alt="Home Property Logo" className="w-full h-full object-contain" />
+            <img src={logo} alt="Home Property Logo" className="w-full h-full  min-w-[120px] object-contain" />
           </motion.div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-tighter text-white leading-none">
+            <span className="text-lg font-bold tracking-tighter max-w-[80%] text-white leading-none">
               {brandName}
             </span>
             <span className="text-[8px] uppercase tracking-[0.3em] text-[var(--primary-color)] font-bold mt-1 opacity-80">

@@ -42,7 +42,7 @@ export default function layout() {
 
       <Navbar
         logo="/logo-black.jpg"
-        brandName="HPCCL"
+        brandName="Home Property Consulting Company Limited"
         links={APP_MENU}
         onLogoClick={() => window.location.href = "/"}
         className='fixed top-0 z-10'

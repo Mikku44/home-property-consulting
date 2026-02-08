@@ -8,6 +8,7 @@ import {
 import { Link } from 'react-router';
 import VisionSection from './home/visionSection';
 import VisualCarousel from '~/components/imageSlider';
+import CertificationSection from '~/components/CertificationSection';
 
 // --- Types ---
 interface Service {
@@ -79,7 +80,7 @@ const imageTransition = {
 
 export default function HomePropertyPro() {
   const [index, setIndex] = useState(0);
-  const images = ["/lecture5.webp", "/lecture6.webp"];
+  const images = ["/award4.jpg", "/course.jpg"];
   // Auto-advance hero slides
   useEffect(() => {
     const timer = setInterval(() => setIndex((prev) => (prev + 1) % 2), 7000);
@@ -182,6 +183,9 @@ export default function HomePropertyPro() {
           </p>
         </div>
       </header>
+
+      <CertificationSection />
+
       {/* 3. THE "WHY" SECTION - TYPOGRAPHY FOCUS */}
       <section className="py-32 px-8 border-b border-black/5">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
@@ -200,7 +204,8 @@ export default function HomePropertyPro() {
 
       {/* 4. SERVICES - MINIMAL LIST DESIGN */}
       <section className="py-32 px-8">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto relative">
+          
           <div className="mb-20">
             <h2 className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/30 mb-4">Professional Expertise</h2>
             <h3 className="text-4xl font-light tracking-tighter">ขอบเขตการให้บริการ</h3>
@@ -290,6 +295,17 @@ export default function HomePropertyPro() {
         { image: "/award5.jpg" },
         { image: "/award6.jpg" },
         { image: "/trophy.webp" },
+        { image: "/client.png" },
+        { image: "/client2.png" },
+        { image: "/client3.png" },
+        { image: "/client4.jpg" },
+        { image: "/client5.jpg" },
+        { image: "/client6.jpg" },
+        { image: "/client7.jpg" },
+        { image: "/client8.jpg" },
+        // { image: "/client9.heic" },
+        // { image: "/client10.heic" },
+        { image: "/course.jpg" },
       ]} />
 
       <VisionSection />

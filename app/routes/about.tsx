@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Award, Users, Lightbulb, Target, ArrowDown } from 'lucide-react';
 import YoutubeShortsSection from '~/components/shortVideo';
+import ProfessionalTimeline from './about/ProfessionalTimeline';
 
 export default function AboutPage() {
   const values = [
@@ -76,29 +77,84 @@ export default function AboutPage() {
         <div className="absolute right-12 bottom-0 h-1/3 w-[1px] bg-gradient-to-b from-transparent to-(--primary-color) hidden md:block opacity-50"></div>
       </div>
       {/* 1. HERO SECTION - MISSION STATEMENT */}
-      <header className="relative pt-48 pb-32 px-8 overflow-hidden">
-        <div className="max-w-7xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-          >
-            <h1 className="text-[10px] uppercase tracking-[0.5em] font-bold text-black/30 mb-8">About Home Property Consulting</h1>
-            <h2 className="text-5xl md:text-[5rem] font-light tracking-tighter leading-[0.95] mb-12">
-              Expertise that <br />
-              <span className="italic text-black/20">Builds Trust.</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-black/60 font-light max-w-3xl leading-relaxed italic">
-              "บริการด้วยใจ บริการแบบมืออาชีพ ผู้เชี่ยวชาญเรื่องคอนโดทั่วกรุงเทพฯ"
-            </p>
-          </motion.div>
-        </div>
+     <header className="relative min-h-[85vh] flex items-center pt-24 pb-16 px-6 bg-[#FAF9F6] border-b border-black/[0.03] overflow-hidden">
+      
+      {/* Background Decor - hidden on mobile to prevent horizontal scroll */}
+      <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 select-none pointer-events-none hidden xl:block">
+        <span className="text-[20rem] font-black tracking-tighter text-black/[0.015]">
+          EST. 2026
+        </span>
+      </div>
 
-        {/* Subtle Decorative Background Text */}
-        <div className="absolute top-1/2 right-[-5%] -translate-y-1/2 select-none pointer-events-none opacity-[0.02] hidden lg:block">
-          <span className="text-[20rem] font-black tracking-tighter">EST. 2026</span>
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="flex flex-col lg:grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          
+          {/* Content Area */}
+          <div className="lg:col-span-7 w-full">
+            <div className="space-y-6 md:space-y-10">
+              {/* Label */}
+              <div className="flex items-center gap-4">
+                <div className="h-[1px] w-8 md:w-12 bg-(--primary-color)" />
+                <h1 className="text-[9px] md:text-[10px] uppercase tracking-[0.4em] font-bold text-black/40">
+                  Home Property Consulting
+                </h1>
+              </div>
+
+              {/* Responsive Heading - Using Clamp to prevent overflow */}
+              <h2 className="text-[3.2rem] sm:text-[4.5rem] md:text-[5.5rem] lg:text-[6rem] font-light tracking-tighter leading-[1.1] text-gray-900">
+                Expertise that <br />
+                <span className="italic font-serif text-(--primary-color)/80 block sm:inline">Builds Trust.</span>
+              </h2>
+
+              {/* Thai Subtext */}
+              <div className="pt-4 md:pt-6">
+                <p className="text-lg md:text-2xl text-gray-400 font-light max-w-xl leading-relaxed italic border-l-[3px] border-(--primary-color) pl-5 md:pl-8">
+                  "บริการด้วยใจ บริการแบบมืออาชีพ <br className="hidden sm:block"/>
+                  ผู้เชี่ยวชาญเรื่องคอนโดทั่วกรุงเทพฯ"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Award Image Area */}
+          <div className="lg:col-span-5 w-full flex justify-center lg:justify-end mt-10 lg:mt-0">
+            <div className="relative p-4 md:pt-12 md:pr-12 inline-block">
+              {/* Ghost Block */}
+              <div className="absolute top-0 right-0 w-[85%] h-[85%] bg-black/[0.02] -z-10 rounded-sm hidden md:block" />
+              
+              <div className="relative bg-white shadow-xl border border-gray-100 p-1">
+                <img 
+                  src="/awart-cert.jpg" 
+                  className="w-full max-w-[260px] md:max-w-[320px] h-auto block" 
+                  alt="Professional Certification" 
+                />
+                
+                {/* Floating Authority Tag */}
+                <div className="absolute -bottom-4 -left-4 md:-bottom-6 md:-left-6 bg-black text-white px-4 py-3 md:px-6 md:py-4 shadow-2xl">
+                  <p className="text-[8px] md:text-[9px] uppercase tracking-[0.2em] font-bold mb-1 opacity-60">Verified</p>
+                  <p className="text-[10px] md:text-xs italic text-(--primary-color)">Official Certified</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </header>
+      </div>
+
+      {/* Footer Details - Hidden on very small screens */}
+      <div className="absolute bottom-8 left-6 md:left-8 hidden sm:block">
+        <div className="flex items-center gap-6 md:gap-10">
+          <div className="flex flex-col">
+            <span className="text-[8px] uppercase tracking-widest font-bold text-black/20">Location</span>
+            <span className="text-[10px] md:text-[11px] font-medium">Bangkok, Thailand</span>
+          </div>
+          <div className="flex flex-col">
+            <span className="text-[8px] uppercase tracking-widest font-bold text-black/20">Focus</span>
+            <span className="text-[10px] md:text-[11px] font-medium">Luxury Condominiums</span>
+          </div>
+        </div>
+      </div>
+    </header>
 
       {/* 2. CORE NARRATIVE SECTION */}
       <section className="py-32 px-8 border-t border-black/5 bg-white">
@@ -129,7 +185,88 @@ export default function AboutPage() {
         </div>
       </section>
 
+
+      <section className="py-32 px-6 bg-[#FAF9F6]">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          
+          {/* --- LEFT: Image Area --- */}
+          <div className="lg:col-span-5 relative">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+              className="aspect-[4/5] overflow-hidden bg-gray-200"
+            >
+              <img 
+                src="/ceo-home-property-consulting.jpg" // Replace with actual CEO image
+                alt="นันทนัช ศรีพัชรพัชร์ (นุ่น)"
+                className="w-full h-full object-cover transition-all duration-700"
+              />
+            </motion.div>
+            
+            {/* Subtle decorative box */}
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 border border-black/5 -z-10 hidden md:block" />
+          </div>
+
+          {/* --- RIGHT: Content Area --- */}
+          <div className="lg:col-span-7">
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, staggerChildren: 0.2 }}
+              className="space-y-8"
+            >
+              <div className="space-y-2">
+                <span className="text-[10px] uppercase tracking-[0.4em] font-bold text-(--primary-color)">
+                  Visionary Leadership
+                </span>
+                <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-gray-900 leading-tight">
+                  นันทนัช ศรีพัชรพัชร์ (นุ่น)
+                </h2>
+                <p className="text-lg italic text-gray-400">CEO and Founder</p>
+              </div>
+
+              <div className="h-px w-20 bg-black/10" />
+
+              <div className="space-y-6">
+                <p className="text-xl text-gray-800 font-light leading-relaxed">
+                  <span className="font-medium text-black">Home Property Consulting Co.,Ltd.</span> 
+                  <br className="hidden md:block"/> ภายใต้การนำของคุณนุ่น มุ่งเน้นการยกระดับมาตรฐานตัวแทนอสังหาริมทรัพย์ในไทย
+                </p>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                  {[
+                    "คณะกรรมการ สมาคมนายหน้าอสังหาริมทรัพย์ไทย",
+                    "คณะกรรมการ การขายและการตลาดอสังหาไทย",
+                    "วิทยากร วินเนอร์ เอสเตท เอ็ดดูเคชั่น",
+                    "วิทยากร โรงเรียนธุรกิจอสังหาริมทรัพย์ไทย"
+                  ].map((role, i) => (
+                    <div key={i} className="flex items-start gap-3 group">
+                      <div className="h-1.5 w-1.5 rounded-full bg-(--primary-color) mt-2 group-hover:scale-150 transition-transform" />
+                      <span className="text-sm text-gray-500 font-light leading-snug">
+                        {role}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pt-10">
+                <p className="text-gray-400 text-sm font-light italic border-l-2 border-gray-100 pl-6 py-2">
+                  "ความสำเร็จของลูกค้า คือหัวใจสำคัญของการทำงานในฐานะที่ปรึกษาด้านอสังหาริมทรัพย์"
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
       <YoutubeShortsSection />
+
+      <ProfessionalTimeline />
 
       {/* 3. VALUES & PROMISE */}
       <section className="py-32 px-8 bg-[#121212] text-white">

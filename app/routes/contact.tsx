@@ -105,7 +105,7 @@ export default function ContactPage() {
                 initial={{ scale: 1.2 }}
                 animate={{ scale: 1 }}
                 transition={{ duration: 2 }}
-                src="/award6.jpg"
+                src="/award3.jpg"
                 className="w-full h-full object-cover  transition-all duration-1000"
                 alt="Academy Excellence"
               />

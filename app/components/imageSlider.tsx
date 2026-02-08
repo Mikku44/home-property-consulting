@@ -46,7 +46,7 @@ const VisualCarousel: React.FC<{ slides: { image: string }[] }> = ({ slides }) =
             initial="enter"
             animate="center"
             exit="exit"
-            className="absolute inset-0 w-full h-full object-cover pointer-events-none"
+            className="absolute inset-0 w-full h-full object-contain pointer-events-none"
           />
         </AnimatePresence>
       </div>
