@@ -48,6 +48,24 @@ const certifications = [
     alt: "Living Insider",
     title: "Partner",
     desc: "Living Insider Thailand"
+  },
+  {
+    src: "/cert3.jpg",
+    alt: "Thai Real Estate Broker Association",
+    title: "BROKER",
+    desc: "Thai Real Estate Broker Association"
+  },
+  {
+    src: "/cert10.png",
+    alt: "Thailand Professional Qualification Institute",
+    title: "Partner",
+    desc: "Thailand Professional Qualification Institute"
+  },
+  {
+    src: "/cert11.jpg",
+    alt: "Property hub",
+    title: "Partner",
+    desc: "Property hub"
   }
 ];
 
