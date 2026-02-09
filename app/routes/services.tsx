@@ -6,9 +6,12 @@ import {
   BarChart3,
   ShieldCheck,
   FileSearch,
-  Camera
+  Camera,
+  ArrowRight
 } from 'lucide-react';
 import { Link } from 'react-router';
+import { SERVICES_IMAGES } from '~/const/app';
+import DraggableScrollSection from './services/OtherServicesSection';
 
 // --- Data Structure ---
 const SERVICES = [
@@ -277,15 +280,23 @@ export default function ServicePage() {
         </div>
       </section>
 
+      {/* Other Services Section - 1:1 Image Banners */}
+      <DraggableScrollSection />
+
       {/* CTA Section */}
-      <section className="py-32 px-8 text-center bg-[#FAF9F6]">
+      <section className="py-32 px-8 text-center bg-(--bg-color)">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-light tracking-tighter mb-10">พร้อมเริ่มต้นวางแผนอสังหาริมทรัพย์กับเราหรือยัง?</h2>
+          <h2 className="text-3xl text-white font-light tracking-tighter mb-10">พร้อมเริ่มต้นวางแผนอสังหาริมทรัพย์กับเราหรือยัง?</h2>
           <Link
-            target='_blank'
-            to="https://lin.ee/aHn58W1" className="px-12 py-5 bg-black text-white text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-black/80 transition-all">
-            ปรึกษาทีมงานมืออาชีพ
-          </Link>
+              to="/contact#contact"
+              className="group relative flex w-fit mx-auto items-center gap-4 bg-white px-10 py-5 overflow-hidden transition-all duration-500"
+            >
+              <div className="absolute inset-0 bg-black translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />
+              <span className="relative z-10 text-black text-[12px] font-bold uppercase tracking-[0.1em] group-hover:text-white transition-colors">
+                รับคำปรึกษา
+              </span>
+              <ArrowRight className="relative z-10 w-4 h-4 text-black group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </Link>
         </div>
       </section>
     </div>

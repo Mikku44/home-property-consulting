@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight, Clock, X, CheckCircle2 } from 'lucide-react';
 import { FaEnvelope, FaLine, FaPhone, FaWhatsapp } from 'react-icons/fa';
+import { SOCIAL_LINKS } from '~/const/app';
 
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -242,7 +243,30 @@ export default function ContactPage() {
                     </div>
                   </motion.div>
                 ))}
+
+
+                <div className="flex flex-col gap-3">
+                  <div className=" text-gray-600 group-hover:text-white">ติดตามข่าวสารเพิ่มเติม</div>
+                  <div className="flex gap-4">
+                    {SOCIAL_LINKS.map(({ Icon, href, label }, i) => (
+                      <motion.a
+                        key={label}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        // Motion properties for the "Formal" feel
+                        whileHover={{ scale: 1.1, backgroundColor: "#ffffff", color: "#000000" }}
+                        whileTap={{ scale: 0.95 }}
+                        className="p-3 border border-white/10 rounded-full  transition-colors duration-200 flex items-center justify-center"
+                      >
+                        <Icon className="w-6 h-6 text-gray-800"  />
+                      </motion.a>
+                    ))}
+                  </div>
+                </div>
               </div>
+
+
             </div>
           </div>
 

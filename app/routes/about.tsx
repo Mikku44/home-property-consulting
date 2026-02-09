@@ -201,7 +201,7 @@ export default function AboutPage() {
             >
               <img 
                 src="/ceo-home-property-consulting.jpg" // Replace with actual CEO image
-                alt="นันทนัช ศรีพัชรพัชร์ (นุ่น)"
+                alt="ปัณณภัสร์ ศรีพัชรพัชร์ (นุ่น)"
                 className="w-full h-full object-cover transition-all duration-700"
               />
             </motion.div>
@@ -223,7 +223,7 @@ export default function AboutPage() {
                   Visionary Leadership
                 </span>
                 <h2 className="text-4xl md:text-5xl font-light tracking-tighter text-gray-900 leading-tight">
-                  นันทนัช ศรีพัชรพัชร์ (นุ่น)
+                  ปัณณภัสร์ ศรีพัชรพัชร์ (นุ่น)
                 </h2>
                 <p className="text-lg italic text-gray-400">CEO and Founder</p>
               </div>
