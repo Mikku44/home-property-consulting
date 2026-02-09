@@ -6,7 +6,7 @@ import type { Route } from './+types/layout';
 import FloatingContact from './FloatingButton';
 import { ArrowRight } from 'lucide-react';
 
-export function meta({ }: Route.MetaArgs) {
+export function meta({}: Route.MetaArgs) {
   return [
     {
       title: "Home Property Consulting | Condo Specialists & Investment Experts",
@@ -18,23 +18,44 @@ export function meta({ }: Route.MetaArgs) {
     },
     {
       name: "keywords",
-      content: "Home Property Consulting, รับฝากขายคอนโด, เช่าคอนโด, ที่ปรึกษาอสังหาริมทรัพย์, Condo Specialists, ลงทุนคอนโด, คอนโดมือสอง",
+      content:
+        "Home Property Consulting, รับฝากขายคอนโด, เช่าคอนโด, ที่ปรึกษาอสังหาริมทรัพย์, Condo Specialists, ลงทุนคอนโด, คอนโดมือสอง",
     },
-    // Open Graph for better social media sharing (Facebook/Line)
+
+    // Open Graph
     {
       property: "og:title",
-      content: "Home Property Consulting | ที่ปรึกษาด้านการลงทุนและตัวแทนอสังหาฯ ครบวงจร",
+      content:
+        "Home Property Consulting | ที่ปรึกษาด้านการลงทุนและตัวแทนอสังหาฯ ครบวงจร",
     },
     {
       property: "og:description",
-      content: "ไม่ใช่เพียงแค่ตัวแทนขาย แต่เราคือ Condo Specialists ที่พร้อมคัดสรรสิ่งที่ดีที่สุดให้กับนักลงทุนและผู้อยู่อาศัย",
+      content:
+        "ไม่ใช่เพียงแค่ตัวแทนขาย แต่เราคือ Condo Specialists ที่พร้อมคัดสรรสิ่งที่ดีที่สุดให้กับนักลงทุนและผู้อยู่อาศัย",
     },
     {
       property: "og:type",
       content: "website",
     },
+    {
+      property: "og:image",
+      content: "https://www.homepropertyconsultinglimited.com/hero2.png",
+    },
+    {
+      property: "og:image:width",
+      content: "1200",
+    },
+    {
+      property: "og:image:height",
+      content: "630",
+    },
+    {
+      property: "og:image:alt",
+      content: "Home Property Consulting",
+    },
   ];
 }
+
 
 export default function layout() {
   return (
