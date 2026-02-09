@@ -5,6 +5,7 @@ import { APP_MENU, } from '~/const/app'
 import type { Route } from './+types/layout';
 import FloatingContact from './FloatingButton';
 import { ArrowRight } from 'lucide-react';
+import Loading from './LoadingScreen';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -60,7 +61,7 @@ export function meta({}: Route.MetaArgs) {
 export default function layout() {
   return (
     <main>
-
+      
       <Navbar
         logo="/logo-black.jpg"
         brandName="Home Property Consulting Company Limited"

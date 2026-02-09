@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useLocation } from "react-router";
+import Loading from "./LoadingScreen";
 
 interface NavLink {
   label: string;
@@ -53,6 +54,7 @@ export default function Navbar({
             : "py-6 bg-transparent"
         }`}
       >
+        <Loading />
         <nav className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* Logo */}
           <Link
