@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight, Clock, X, CheckCircle2 } from 'lucide-react';
+import { FaEnvelope, FaLine, FaPhone, FaWhatsapp } from 'react-icons/fa';
 
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,6 +51,35 @@ export default function ContactPage() {
     e.preventDefault();
     setIsModalOpen(true);
   };
+
+
+  const contactActions = [
+    {
+      label: "WhatsApp",
+      icon: <FaWhatsapp size={20} />,
+      color: "bg-[#25D366]",
+      href: "https://wa.me/66817146934",
+    },
+    {
+      label: "Line Official",
+      icon: <FaLine size={20} />,
+      color: "bg-[#06C755]",
+      href: "https://lin.ee/aHn58W1",
+    },
+    {
+      label: "Call Us",
+      icon: <FaPhone size={16} />,
+      color: "bg-[#111827]", // Dark Slate for a formal look
+      href: "tel:020964653",
+    },
+    {
+      label: "Email",
+      icon: <FaEnvelope size={16} />,
+      color: "bg-[#4B5563]",
+      href: "mailto:homepropertyconsulting@gmail.com",
+    },
+  ];
+
 
   const contactInfo = [
     {
@@ -147,7 +177,7 @@ export default function ContactPage() {
                   เพื่อให้ทุกการตัดสินใจด้านอสังหาริมทรัพย์ของคุณเป็นไปอย่างชาญฉลาด
                 </p>
 
-               
+
               </div>
             </motion.div>
           </div>
@@ -216,8 +246,10 @@ export default function ContactPage() {
             </div>
           </div>
 
+
+
           {/* Right: Contact Form */}
-          <div className="lg:col-span-7 bg-white p-10 md:p-16 border border-black/5 shadow-sm">
+          <div id="contact" className="lg:col-span-7 bg-white p-10 md:p-16 border border-black/5 shadow-sm">
             <h3 className="text-2xl font-light tracking-tighter mb-12">ส่งข้อความถึงเรา</h3>
             <form onSubmit={handleSubmit} className="space-y-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
@@ -269,12 +301,34 @@ export default function ContactPage() {
                   placeholder="รายละเอียดที่คุณต้องการให้เราดูแล"
                 />
               </div>
-              <button
-                type="submit"
-                className="group flex items-center gap-4 bg-black text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-black/80 transition-all active:scale-95"
-              >
-                ส่งข้อความ <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </button>
+              <div className="flex flex-col gap-6">
+                {/* Submit button */}
+                <button
+                  type="submit"
+                  className="group flex items-center justify-center gap-4 bg-black text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.2em] hover:bg-black/80 transition-all active:scale-95"
+                >
+                  ส่งข้อความ
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
+
+                {/* Minimal contact actions */}
+                <div className="flex flex-wrap gap-3">
+                  {contactActions.map((action) => (
+                    <a
+                      key={action.label}
+                      href={action.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 border border-black/10 px-5 py-3 text-[10px] font-bold uppercase tracking-[0.18em] text-black hover:bg-black hover:text-white transition-all"
+                    >
+                      {action.icon}
+                      {action.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+
             </form>
           </div>
         </div>

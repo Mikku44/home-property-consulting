@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Award, Users, Lightbulb, Target, ArrowDown } from 'lucide-react';
 import YoutubeShortsSection from '~/components/shortVideo';
 import ProfessionalTimeline from './about/ProfessionalTimeline';
+import { Link } from 'react-router';
 
 export default function AboutPage() {
   const values = [
@@ -315,10 +316,10 @@ export default function AboutPage() {
 
       {/* 5. MINIMAL CTA */}
       <div className="py-20 px-8 flex justify-center border-t border-black/5">
-        <button className="group relative overflow-hidden px-16 py-6 bg-black text-white text-[10px] font-bold uppercase tracking-[0.3em]">
+        <Link to="/contact" className="group relative overflow-hidden px-16 py-6 bg-black text-white text-[10px] font-bold uppercase tracking-[0.3em]">
           <span className="relative z-10">Get to Know Us Better</span>
           <div className="absolute inset-0 bg-yellow-500 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-        </button>
+        </Link>
       </div>
     </div>
   );

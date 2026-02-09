@@ -51,7 +51,7 @@ export default function layout() {
           <div className="flex gap-3">
 
             <Link
-              to="/contact"
+              to="/contact#contact"
               className="group relative flex items-center gap-4 bg-white px-10 py-5 overflow-hidden transition-all duration-500"
             >
               <div className="absolute inset-0 bg-black translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500" />

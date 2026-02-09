@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Remark } from 'react-remark';
-import { 
-  ArrowLeft,  
+import {
+  ArrowLeft,
   ChevronRight,
   Share2
 } from 'lucide-react';
@@ -37,13 +37,20 @@ export default function BlogDetailPage() {
     }
   };
 
+  const currentIndex = POSTS.findIndex(p => p.slug === slug);
+  const nextPost =
+    currentIndex >= 0 && currentIndex < POSTS.length - 1
+      ? POSTS[currentIndex + 1]
+      : POSTS[0]; // fallback to first post
+
+
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+      <div className="h-[100px] bg-(--bg-color)"></div>
       {/* NAVIGATION */}
       <nav className="pt-32 px-8">
         <div className="max-w-4xl mx-auto">
-          <button 
+          <button
             onClick={() => navigate(-1)}
             className="group flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-bold text-black/40 hover:text-black transition-colors"
           >
@@ -66,7 +73,7 @@ export default function BlogDetailPage() {
               <span className="w-1 h-1 bg-black/10 rounded-full"></span>
               <span className="text-black/40">{post.date}</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-light tracking-tight leading-[1.2] mb-10">
               {post.title}
             </h1>
@@ -96,11 +103,11 @@ export default function BlogDetailPage() {
       {/* FEATURED IMAGE */}
       <section className="px-8 mb-20">
         <div className="max-w-6xl mx-auto h-[50vh] md:h-[70vh] overflow-hidden bg-slate-200 rounded-sm">
-          <motion.img 
+          <motion.img
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5 }}
-            src={post.image} 
+            src={post.image}
             className="w-full h-full object-cover"
             alt={post.title}
           />
@@ -118,8 +125,8 @@ export default function BlogDetailPage() {
             prose-blockquote:py-4 prose-blockquote:font-normal prose-blockquote:italic
             prose-strong:font-bold prose-strong:text-black
             prose-hr:border-black/5">
-            
-            <Remark children={post?.content || ""}/>
+
+            <Remark children={post?.content || ""} />
 
           </div>
 
@@ -137,7 +144,7 @@ export default function BlogDetailPage() {
       {/* NOTIFICATION TOAST */}
       <AnimatePresence>
         {showToast && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
@@ -149,21 +156,35 @@ export default function BlogDetailPage() {
       </AnimatePresence>
 
       {/* READ NEXT SECTION */}
+      {/* READ NEXT SECTION */}
       <section className="py-24 px-8 bg-white border-t border-black/5">
         <div className="max-w-4xl mx-auto text-center md:text-left">
-          <h4 className="text-[11px] uppercase tracking-[0.4em] font-bold text-black/30 mb-12">เจาะลึกความรู้เพิ่มเติม</h4>
-          <Link to={`/blog/${POSTS[1].slug}`} className="group block">
+          <h4 className="text-[11px] uppercase tracking-[0.4em] font-bold text-black/30 mb-12">
+            เจาะลึกความรู้เพิ่มเติม
+          </h4>
+
+          <Link to={`/blog/${nextPost.slug}`} className="group block">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="w-full md:w-80 aspect-[4/3] overflow-hidden rounded-sm shadow-sm">
-                <img src={POSTS[1].image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000" alt="Next Post" />
+                <img
+                  src={nextPost.image}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+                  alt={nextPost.title}
+                />
               </div>
+
               <div className="flex-1">
-                <p className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] mb-4">{POSTS[1].category}</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-[#C5A059] mb-4">
+                  {nextPost.category}
+                </p>
+
                 <h3 className="text-2xl md:text-3xl font-light tracking-tight leading-snug group-hover:opacity-60 transition-opacity">
-                  {POSTS[1].title}
+                  {nextPost.title}
                 </h3>
+
                 <div className="mt-8 flex items-center justify-center md:justify-start gap-3 text-[11px] font-bold uppercase tracking-widest">
-                  อ่านต่อ <ChevronRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
+                  อ่านต่อ
+                  <ChevronRight className="w-3 h-3 group-hover:translate-x-2 transition-transform" />
                 </div>
               </div>
             </div>
