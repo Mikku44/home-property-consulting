@@ -255,6 +255,7 @@ export default function BlogPage() {
               {/* Wrap Image in Link */}
               <Link to={`/blog/${POSTS[0].slug}`}>
                 <img
+                  loading='lazy'
                   src={POSTS[0].image}
                   alt="Featured"
                   className="w-full aspect-[16/9] object-cover opacity-80 group-hover:scale-105 transition-transform duration-1000 grayscale-[50%] group-hover:grayscale-0 cursor-pointer"
@@ -311,6 +312,7 @@ export default function BlogPage() {
                   <Link to={`/blog/${postSlug}`}>
                     <div className="aspect-[4/5] bg-black overflow-hidden mb-8 cursor-pointer">
                       <img
+                        loading='lazy'
                         src={post.image}
                         alt={post.title}
                         className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700 grayscale-[100%] group-hover:grayscale-0"
@@ -361,6 +363,7 @@ export default function BlogPage() {
             >
               <div className="aspect-square bg-[#F5F5F5] overflow-hidden group relative border border-black/5">
                 <img
+                  loading='lazy'
                   src={`/poster (${index + 1}).jpg`}
                   alt={`Insight ${index + 1}`}
                   className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"

@@ -89,6 +89,7 @@ export default function WorkPage() {
                             {/* Image Container */}
                             <div className="relative aspect-[3/4] overflow-hidden bg-zinc-200 shadow-sm mb-6">
                                 <motion.img
+                                  loading='lazy'
                                     whileHover={{ scale: 1.05 }}
                                     transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
                                     src={work.image}

@@ -142,6 +142,7 @@ export default function DraggableScrollSection() {
               className="scroll-card relative aspect-square group overflow-hidden bg-muted flex-shrink-0 w-[85vw] sm:w-[60vw] md:w-[400px] lg:w-[420px]"
             >
               <img
+                loading='lazy'
                 src={item.src || "/placeholder.svg"}
                 className={`w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:grayscale-0 ${
                   isDragging ? "pointer-events-none" : ""

@@ -246,6 +246,7 @@ export default function ServicePage() {
           className="w-full h-full"
         >
           <img
+          loading='lazy'
             src="/service.jpg"
             className='w-full h-full object-cover'
             alt="Home Property Professional Services"
@@ -315,6 +316,7 @@ export default function ServicePage() {
             </div>
             <div className="relative aspect-[4/5] bg-white/5 overflow-hidden grayscale hover:grayscale-0 transition-all duration-1000">
               <img
+                loading='lazy'
                 src="lecture4.webp"
                 className="w-full h-full object-cover opacity-50"
                 alt="Professional Office"
