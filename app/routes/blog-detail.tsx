@@ -10,13 +10,44 @@ import {
 import { POSTS } from '~/repo/blogData';
 import { Link, useNavigate, useParams } from 'react-router';
 
+
+export function meta({ params }: { params: {slug : string} }) {
+  // Handle the "Not Found" or loading state
+ 
+
+   const post = POSTS.find(p => p.slug === params.slug);
+
+    if (!post) {
+    return [{ title: "Post Not Found | Home Property Consulting" }];
+  }
+
+  return [
+    { title: `${post.title} | Home Property Consulting` },
+    { name: "description", content: post.excerpt },
+    { name: "keywords", content: `${post.category}, ลงทุนคอนโด, อสังหาริมทรัพย์, ${post.title}` },
+
+    // Open Graph / Social Media
+    { property: "og:title", content: post.title },
+    { property: "og:description", content: post.excerpt },
+    { property: "og:image", content: post.image }, // Dynamic image from post
+    { property: "og:url", content: `https://www.homepropertyconsultinglimited.com/blog/${post.slug}` },
+    { property: "og:type", content: "article" },
+    
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: post.title },
+    { name: "twitter:description", content: post.excerpt },
+    { name: "twitter:image", content: post.image },
+  ];
+}
+
 export default function BlogDetailPage() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [showToast, setShowToast] = useState(false);
 
   // Find the post based on the URL Slug
-  const post = POSTS.find(p => p.slug === slug) || POSTS[0];
+  const post = POSTS.find(p => p.slug === slug) || null;
 
   const handleShare = async () => {
     const shareData = {
@@ -43,6 +74,37 @@ export default function BlogDetailPage() {
       ? POSTS[currentIndex + 1]
       : POSTS[0]; // fallback to first post
 
+
+  if (!post) {
+    return (
+      <div className="bg-[#FAF9F6] min-h-screen flex flex-col items-center justify-center text-center px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <span className="text-[10px] uppercase tracking-[0.5em] text-black/20 font-bold mb-8 block">
+            Error 404
+          </span>
+          <h1 className="text-4xl md:text-6xl font-light tracking-tighter mb-8">
+            ไม่พบเนื้อหาที่ <br />
+            <span className="italic text-black/30">คุณกำลังมองหา</span>
+          </h1>
+          <p className="text-sm text-black/50 font-light mb-12 max-w-md mx-auto leading-relaxed">
+            บทความนี้อาจถูกย้าย หรือคุณอาจระบุ URL ไม่ถูกต้อง
+            ลองกลับไปสำรวจบทความอื่นๆ ในคลังความรู้ของเรา
+          </p>
+          <Link
+            to="/blog"
+            className="inline-flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest bg-black text-white px-10 py-4 hover:bg-black/80 transition-all"
+          >
+            <ArrowLeft className="w-3 h-3" />
+            กลับสู่หน้ารวมบทความ
+          </Link>
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
@@ -84,7 +146,7 @@ export default function BlogDetailPage() {
                   HPC
                 </div>
                 <div>
-                  <p className="text-[11px] uppercase tracking-widest font-bold">กองบรรณาธิการ</p>
+                  <p className="text-[11px] uppercase tracking-widest font-bold">ADMIN</p>
                   <p className="text-[11px] text-black/40 uppercase tracking-widest">ใช้เวลาอ่าน {post.readTime}</p>
                 </div>
               </div>

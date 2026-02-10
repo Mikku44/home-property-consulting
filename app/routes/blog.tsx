@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Search, Filter } from 'lucide-react';
 import { Link } from 'react-router';
+import type { Route } from './+types/blog';
 
 // --- Types ---
 interface BlogPost {
@@ -56,8 +57,84 @@ const POSTS: BlogPost[] = [
     title: "เทรนด์ Wellness Residence: เมื่อบ้านไม่ได้เป็นเพียงที่พัก แต่คือ 'สินทรัพย์เพื่อสุขภาพ'",
     excerpt: "ทำไมอสังหาฯ แนวสุขภาพถึงมีมูลค่าพุ่งสูงขึ้นอย่างรวดเร็วในปีนี้ และเจาะลึกทำเลรอบกรุงเทพฯ ที่น่าจับตามองสำหรับนักลงทุนสายเน้นคุณภาพชีวิต...",
     image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000"
-  }
+  },
+  {
+    id: "05",
+    slug: "how-to-sell-condo-bts-onnuch-best-price",
+    category: "Selling Guide",
+    date: "Feb 10, 2026",
+    readTime: "8 min",
+    title: "วิธีขายคอนโด BTS อ่อนนุช ให้ได้ราคาดีที่สุด: คู่มือครบถ้วนสำหรับเจ้าของอสังหาฯ",
+    excerpt: "ทำเลดี ราคาแข่งขันได้ แต่ต้องรู้กลยุทธ์ที่ถูกต้อง ดูวิธีการขายคอนโด BTS อ่อนนุชให้ได้ราคาสูงสุด พร้อมเทคนิคลับและขั้นตอนที่ผู้ขายต้องรู้...",
+    image: "/poster (11).jpg"
+  },
+  {
+    id: "06",
+    slug: "condo-deposit-interest-1-25-percent-better",
+    category: "Investment Strategy",
+    date: "Feb 10, 2026",
+    readTime: "7 min",
+    title: "ขายฝากคอนโด ดอกเบี้ย 1.25% ดีกว่าแบบอื่นยังไง? วิเคราะห์ทางเลือกสำหรับเจ้าของคอนโด",
+    excerpt: "ดอกเบี้ย 1.25% ต่ำกว่าธนาคาร แต่ดีกว่าการเช่าอยู่หรือ? เปรียบเทียบเชิงลึกระหว่าง 'ขายฝาก' 'เช่า' และ 'ขายสด' พร้อมตัวเลขและกลยุทธ์ที่ผู้มีคอนโดต้องรู้...",
+    image: "/blog.jpg"
+  },
+   {
+  id: "07",
+  slug: "buying-selling-condo-bts-onnuch-guide",
+  category: "Real Estate Transaction",
+  date: "Feb 10, 2026",
+  readTime: "9 min",
+  title: "รับซื้อขายคอนโด BTS อ่อนนุช: คู่มือเต็มอบรมสำหรับผู้ซื้อและผู้ขาย",
+  excerpt: "BTS อ่อนนุช เป็นตลาดคอนโดยอดนิยมในกรุงเทพฯ ราคา 2.5-7 ล้านบาท ขึ้นอยู่กับประเภท ดูคู่มือเต็มสำหรับผู้ซื้อและผู้ขายพร้อมราคาตลาด ขั้นตอน และเทคนิคการต่อรอง...",
+  image: "/poster (16).jpg"
+}
 ];
+
+export function meta({ }: Route.MetaArgs) {
+  return [
+    {
+      title: "คลังความรู้และบทวิเคราะห์อสังหาริมทรัพย์ | Home Property Consulting",
+    },
+    {
+      name: "description",
+      content: "เจาะลึกเทรนด์ตลาดคอนโด กลยุทธ์การลงทุน และอัปเดตกฎหมายอสังหาฯ ปี 2026 โดยทีม Condo Specialists เพื่อให้คุณตัดสินใจลงทุนได้อย่างแม่นยำ",
+    },
+    {
+      name: "keywords",
+      content: "บทความอสังหาริมทรัพย์, วิเคราะห์ตลาดคอนโด 2026, วางแผนภาษีที่ดิน, เทรนด์อสังหาฯ, วิธีเลือกคอนโดลงทุน, Creative Tour Guru",
+    },
+
+    // Open Graph - สำหรับแชร์หน้าคลังความรู้ลง Social Media
+    {
+      property: "og:title",
+      content: "Insight & Knowledge: ติดอาวุธความรู้ก่อนลงทุนอสังหาฯ",
+    },
+    {
+      property: "og:description",
+      content: "รวมบทความคุณภาพและสรุปสาระสำคัญที่คุณต้องรู้ เกี่ยวกับตลาดคอนโดและการบริหารสินทรัพย์อย่างมืออาชีพ",
+    },
+    {
+      property: "og:type",
+      content: "website",
+    },
+
+    {
+      property: "og:url",
+      content: "https://www.homepropertyconsultinglimited.com/blog",
+    },
+
+    // Twitter
+    {
+      name: "twitter:card",
+      content: "summary_large_image",
+    },
+    {
+      name: "twitter:title",
+      content: "Property Investment Knowledge Base",
+    },
+  ];
+}
+
 export default function BlogPage() {
   // const [activeCategory, setActiveCategory] = useState('All');
   // const categories = ['All', 'Investment', 'Management', 'Legal', 'Market Update'];
@@ -259,6 +336,48 @@ export default function BlogPage() {
           </div>
         </div>
       </section>
+      <section className="py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-8 mb-12 flex justify-between items-end">
+          <div>
+            <h2 className="text-[10px] uppercase tracking-[0.5em] font-bold text-black/30 mb-4">Visual Journal</h2>
+            <h3 className="text-4xl font-light tracking-tighter">Market <span className="italic">Insights</span></h3>
+          </div>
+          <div className="flex gap-4 mb-2">
+            {/* Custom Navigation buttons could go here */}
+            <span className="text-[10px] uppercase tracking-widest opacity-30">Drag to Explore —&gt;</span>
+          </div>
+        </div>
+
+        {/* Horizontal Scroll Container */}
+        <div
+          // ref={scrollRef}
+          className="flex gap-6 overflow-x-auto px-8 pb-12 snap-x snap-mandatory no-scrollbar cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {Array.from({ length: 21 }).map((_, index) => (
+            <motion.div
+              key={index}
+              className="flex-none w-[85vw] md:w-[400px] snap-center"
+            >
+              <div className="aspect-square bg-[#F5F5F5] overflow-hidden group relative border border-black/5">
+                <img
+                  src={`/poster (${index + 1}).jpg`}
+                  alt={`Insight ${index + 1}`}
+                  className="w-full h-full object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                />
+                {/* Number Indicator */}
+                <div className="absolute top-4 right-4 text-[10px] font-serif italic text-white/50">
+                  {String(index + 1).padStart(2, '0')}
+                </div>
+              </div>
+              <div className="mt-4">
+                <h4 className="text-[10px] uppercase tracking-[0.2em] font-bold">Property Series</h4>
+                <p className="text-[9px] text-black/40 uppercase tracking-widest mt-1">Home Property Consulting Company Limited</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
       {/* 4. NEWSLETTER - MINIMALIST */}
       <section className="py-32 px-8 bg-[#121212] text-white">
         <div className="max-w-4xl mx-auto text-center">
@@ -278,6 +397,8 @@ export default function BlogPage() {
           </form>
         </div>
       </section>
+
+
     </div>
   );
 }

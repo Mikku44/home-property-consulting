@@ -132,6 +132,55 @@ const ServiceCard = ({ service, index }: { service: typeof SERVICES[0], index: n
   </motion.div>
 );
 
+export function meta({ data }: { data: { service?: any } }) {
+  // Fallback values if specific service data isn't loaded
+  const title = data?.service?.title || "Professional Real Estate Services";
+  const description = data?.service?.description || 
+    "บริการรับฝากขาย-เช่า และบริหารจัดการอสังหาริมทรัพย์แบบครบวงจร โดยทีมงาน Condo Specialists ที่เข้าใจความต้องการของนักลงทุนอย่างแท้จริง";
+
+  return [
+    { 
+      title: `${title} | Home Property Consulting` 
+    },
+    { 
+      name: "description", 
+      content: description 
+    },
+    { 
+      name: "keywords", 
+      content: "รับฝากเช่าคอนโด, บริหารอสังหาริมทรัพย์, ที่ปรึกษาการลงทุน, Property Management Bangkok, เช่าคอนโดหรู" 
+    },
+
+    // Open Graph - Targeted for Conversion
+    { 
+      property: "og:title", 
+      content: `${title} | Expert Condo Solutions` 
+    },
+    { 
+      property: "og:description", 
+      content: "ยกระดับการจัดการสินทรัพย์ของคุณด้วยทีมงานมืออาชีพ มั่นใจได้ทั้งเรื่องผลตอบแทนและคุณภาพผู้เช่า" 
+    },
+    { 
+      property: "og:type", 
+      content: "website" 
+    },
+    { 
+      property: "og:image", 
+      content: "https://www.homepropertyconsultinglimited.com/service.jpg" // Use a professional team/office shot
+    },
+
+    // Local SEO (Crucial for Service Businesses)
+    {
+      name: "geo.region",
+      content: "TH-10" // Bangkok region code
+    },
+    {
+      name: "geo.placename",
+      content: "Bangkok"
+    }
+  ];
+}
+
 export default function ServicePage() {
   return (
     <div className="bg-[#FAF9F6] min-h-screen font-sans selection:bg-black selection:text-white">

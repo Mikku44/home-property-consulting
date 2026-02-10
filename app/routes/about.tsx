@@ -4,6 +4,50 @@ import { Award, Users, Lightbulb, Target, ArrowDown } from 'lucide-react';
 import YoutubeShortsSection from '~/components/shortVideo';
 import ProfessionalTimeline from './about/ProfessionalTimeline';
 import { Link } from 'react-router';
+import type { Route } from './+types/about';
+
+
+
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { 
+      title: "รู้จักเรา | Condo Specialists & Investment Experts | Home Property Consulting", 
+    },
+    { 
+      name: "description", 
+      content: "ทำความรู้จักทีมงาน Home Property Consulting ผู้เชี่ยวชาญด้านคอนโดมิเนียมและที่ปรึกษาการลงทุนอสังหาฯ ด้วยประสบการณ์กว่า 10 ปี เราเปลี่ยนความซับซ้อนของการลงทุนให้เป็นความคุ้มค่าที่จับต้องได้", 
+    },
+    { 
+      name: "keywords", 
+      content: "ทีมงาน Home Property Consulting, ประวัติบริษัทอสังหาริมทรัพย์, Condo Specialists คือใคร, ที่ปรึกษาอสังหาฯ มืออาชีพ, วิสัยทัศน์ Home Property", 
+    },
+
+    // Open Graph - สร้างความประทับใจเมื่อแชร์ประวัติบริษัท
+    { 
+      property: "og:title", 
+      content: "มากกว่าแค่ตัวแทนอสังหาฯ เราคือพาร์ทเนอร์ความสำเร็จของคุณ", 
+    },
+    { 
+      property: "og:description", 
+      content: "เจาะลึกปรัชญาการทำงานและทีมงานเบื้องหลังความสำเร็จของ Home Property Consulting ในการดูแลสินทรัพย์ระดับพรีเมียม", 
+    },
+    { 
+      property: "og:type", 
+      content: "profile", 
+    },
+    { 
+      property: "og:image", 
+      content: "https://www.homepropertyconsultinglimited.com/about.jpg", // แนะนำให้ใช้รูปทีมงานที่ดู Professional หรือรูปผู้บริหาร/ออฟฟิศที่ดูน่าเชื่อถือ
+    },
+
+    // Twitter
+    { 
+      name: "twitter:card", 
+      content: "summary_large_image", 
+    },
+  ];
+}
 
 export default function AboutPage() {
   const values = [

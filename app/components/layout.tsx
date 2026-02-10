@@ -91,6 +91,7 @@ export default function layout() {
 
       <Outlet />
       <Footer />
+       <Loading />
     </main>
   )
 }

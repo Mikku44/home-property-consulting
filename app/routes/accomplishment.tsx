@@ -3,6 +3,54 @@ import { ArrowUpRight, X } from 'lucide-react';
 import { useState } from 'react';
 import { PAST_WORKS } from '~/const/app';
 
+export function meta() {
+  return [
+    { 
+      title: "ผลงานที่ผ่านมาและความสำเร็จ | Home Property Consulting", 
+    },
+    { 
+      name: "description", 
+      content: "สำรวจความสำเร็จและผลงานการดูแลลูกค้าของเรา ทั้งการปิดการขาย-เช่า คอนโดมิเนียมระดับ Luxury และการบริหารพอร์ตอสังหาฯ ที่ได้รับความไว้วางใจจากนักลงทุนกว่า 100 ราย", 
+    },
+    { 
+      name: "keywords", 
+      content: "ผลงาน Home Property Consulting, รีวิวลูกค้า, ปิดการขายคอนโด, บริหารการเช่าสำเร็จ, Condo Specialist Thailand, ความสำเร็จการลงทุนอสังหา", 
+    },
+
+    // Open Graph - แสดงความน่าเชื่อถือเมื่อแชร์ลิงก์
+    { 
+      property: "og:title", 
+      content: "Proven Results: ผลงานจริงจากทีมงาน Home Property Consulting", 
+    },
+    { 
+      property: "og:description", 
+      content: "เราไม่ได้แค่พูด แต่เราทำจริง ดูสถิติการปิดการขายและเคสตัวอย่างความสำเร็จของลูกค้าที่ไว้วางใจให้เราดูแล", 
+    },
+    { 
+      property: "og:type", 
+      content: "website", 
+    },
+    { 
+      property: "og:image", 
+      content: "https://www.homepropertyconsultinglimited.com/trophy.webp", // แนะนำให้ใช้รูปที่รวมโลโก้โครงการดังๆ ที่เคยปิดดีลได้
+    },
+    { 
+      property: "og:site_name", 
+      content: "Home Property Consulting", 
+    },
+
+    // Twitter Card
+    { 
+      name: "twitter:card", 
+      content: "summary_large_image", 
+    },
+    { 
+      name: "twitter:title", 
+      content: "Our Success Stories | Home Property Consulting", 
+    },
+  ];
+}
+
 export default function WorkPage() {
     // 1. State สำหรับเก็บรูปภาพที่ถูกเลือก
     const [selectedImage, setSelectedImage] = useState<string | null>(null);

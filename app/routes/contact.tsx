@@ -3,6 +3,48 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight, Clock, X, CheckCircle2 } from 'lucide-react';
 import { FaEnvelope, FaLine, FaPhone, FaWhatsapp } from 'react-icons/fa';
 import { SOCIAL_LINKS } from '~/const/app';
+import type { Route } from './+types/contact';
+
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { 
+      title: "ติดต่อสอบถามและปรึกษาเรา | Home Property Consulting", 
+    },
+    { 
+      name: "description", 
+      content: "พร้อมเริ่มต้นลงทุนอสังหาฯ หรือต้องการฝากขาย-เช่าคอนโด? ติดต่อทีมงาน Condo Specialists ของเราได้ผ่าน Line, โทรศัพท์ หรือเยี่ยมชมออฟฟิศของเราเพื่อรับคำปรึกษาแบบมืออาชีพ", 
+    },
+    { 
+      name: "keywords", 
+      content: "ติดต่อ Home Property Consulting, เบอร์โทรเอเจนท์คอนโด, ปรึกษาลงทุนอสังหา, ฝากเช่าคอนโดติดต่อ, เอเจนท์อสังหาฯ กรุงเทพ", 
+    },
+
+    // Open Graph - สำหรับการแชร์ช่องทางติดต่อ
+    { 
+      property: "og:title", 
+      content: "Contact Us: ให้เราช่วยดูแลทุกเรื่องอสังหาฯ ของคุณ", 
+    },
+    { 
+      property: "og:description", 
+      content: "ช่องทางการติดต่อและแผนที่สำนักงาน Home Property Consulting ปรึกษาเรื่องฝากขาย-เช่า และการลงทุนคอนโดฟรีวันนี้", 
+    },
+    { 
+      property: "og:type", 
+      content: "website", 
+    },
+    { 
+      property: "og:image", 
+      content: "https://www.homepropertyconsultinglimited.com/contact-og.png", // แนะนำรูปออฟฟิศหรือรูปแอดมินที่ดูเป็นมิตร
+    },
+
+    // Local Business Metadata (สำคัญมากสำหรับการค้นหาบน Google Maps)
+    { 
+      name: "geo.placename", 
+      content: "Bangkok, Thailand" 
+    },
+  ];
+}
 
 export default function ContactPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
