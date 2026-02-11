@@ -13,12 +13,14 @@ interface NavbarProps {
   logo?: string;
   brandName?: string;
   links?: NavLink[];
+  rightContent: any;
 }
 
 export default function Navbar({
   logo = "/logo.png",
   brandName = "Home Property",
   links = [],
+  rightContent
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeMobileSubmenu, setActiveMobileSubmenu] = useState<string | null>(null);
@@ -49,11 +51,10 @@ export default function Navbar({
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${
-          isScrolled
+        className={`fixed top-0 left-0 w-full z-[100] transition-all duration-500 ${isScrolled
             ? "py-3 bg-[#0a0a0a]/90 backdrop-blur-xl border-b border-white/5"
             : "py-6 bg-transparent"
-        }`}
+          }`}
       >
         <nav className="max-w-[1440px] mx-auto px-6 md:px-12 flex items-center justify-between">
           {/* LOGO */}
@@ -85,9 +86,8 @@ export default function Navbar({
                   <li key={link.href} className="relative group py-2">
                     <Link
                       to={link.href}
-                      className={`flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.25em] transition-all duration-300 ${
-                        isActive ? "text-(--primary-color)" : "text-white/60 hover:text-white"
-                      }`}
+                      className={`flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.25em] transition-all duration-300 ${isActive ? "text-(--primary-color)" : "text-white/60 hover:text-white"
+                        }`}
                     >
                       {link.label}
                       {hasChildren && <ChevronDown className="w-3 h-3 opacity-40 group-hover:rotate-180 transition-transform duration-300" />}
@@ -116,13 +116,10 @@ export default function Navbar({
                 );
               })}
             </ul>
-            
+
             <div className="h-4 w-[1px] bg-white/10 mx-2" />
-            
-            {/* CTA Button */}
-            <Link to="/contact" className="px-5 py-2.5 bg-white text-black text-[10px] font-bold uppercase tracking-widest hover:bg-(--primary-color) transition-colors">
-              Contact Us
-            </Link>
+
+              <div className="flex items-center">{rightContent}</div>
           </div>
 
           {/* MOBILE TOGGLE */}
@@ -156,7 +153,7 @@ export default function Navbar({
                         {link.label}
                       </Link>
                       {link.children && (
-                        <button 
+                        <button
                           onClick={() => setActiveMobileSubmenu(activeMobileSubmenu === link.label ? null : link.label)}
                           className="p-4"
                         >
@@ -185,17 +182,17 @@ export default function Navbar({
 
               {/* Mobile Footer */}
               <div className="mt-auto pt-20">
-                 <div className="h-[1px] bg-white/5 w-full mb-8" />
-                 <div className="flex justify-between items-end">
-                    <div className="flex flex-col gap-4">
-                      <div className="flex items-center gap-2 text-white/40 text-[10px] tracking-widest uppercase">
-                        <MessageCircle size={14} /> Line: @condobkk
-                      </div>
-                      <div className="flex items-center gap-2 text-white/40 text-[10px] tracking-widest uppercase">
-                        <Globe size={14} /> Bangkok, TH
-                      </div>
+                <div className="h-[1px] bg-white/5 w-full mb-8" />
+                <div className="flex justify-between items-end">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center gap-2 text-white/40 text-[10px] tracking-widest uppercase">
+                      <MessageCircle size={14} /> Line: @condobkk
                     </div>
-                 </div>
+                    <div className="flex items-center gap-2 text-white/40 text-[10px] tracking-widest uppercase">
+                      <Globe size={14} /> Bangkok, TH
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </motion.div>
