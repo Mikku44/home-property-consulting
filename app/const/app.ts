@@ -490,11 +490,21 @@ export const SOCIAL_LINKS = [
     label: "TikTok"
   }
 ];
+
+
 export const APP_MENU = [
   { label: "หน้าแรก", href: "/" },
-  { label: "บริการของเรา", href: "/services" },
+  {
+    label: "บริการของเรา",
+    href: "/services",
+    children: [
+      { label: "รับซื้อคอนโด", href: "/services/buy-condo" },
+      { label: "ฝากขาย / ปล่อยเช่า", href: "/services/sell-rent" },
+      { label: "ขายฝากคอนโด", href: "/services/condo-mortgage" },
+    ],
+  },
   { label: "ผลงานที่ผ่านมา", href: "/accomplishment" },
   { label: "บทความ", href: "/blog" },
   { label: "เกี่ยวกับเรา", href: "/about" },
-  { label: "ติดต่อ", href: "/contact" }
-]
+  { label: "ติดต่อ", href: "/contact" },
+];
