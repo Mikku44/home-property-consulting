@@ -62,7 +62,7 @@ export default function Navbar({
               animate={{ scale: isScrolled ? 0.85 : 1 }}
               className="relative w-10 h-10"
             >
-              <img src={logo} alt="Logo" className="w-full h-full min-w-[120px] object-contain" />
+              <img src={logo} alt="Logo" className="w-full h-full  object-contain" />
             </motion.div>
             <div className="flex flex-col">
               <span className="text-lg font-bold tracking-tighter text-white leading-none uppercase">
