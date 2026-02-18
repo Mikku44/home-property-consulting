@@ -1,16 +1,16 @@
 import { motion } from 'framer-motion';
-import { Camera, Megaphone,  Key, Search, BarChart3, Users2, ShieldCheck } from 'lucide-react';
+import { Camera, Megaphone, Key, Search, BarChart3, Users2, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
 import type { Route } from './+types/sell-rent';
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
-    { 
-      title: "ฝากขาย-ฝากเช่าคอนโด มืออาชีพ | Home Property Consulting", 
+    {
+      title: "ฝากขาย-ฝากเช่าคอนโด มืออาชีพ | Home Property Consulting",
     },
-    { 
-      name: "description", 
-      content: "บริการรับฝากขายและปล่อยเช่าคอนโดระดับพรีเมียม โดยทีมงาน Condo Specialists ดูแลการตลาดครบวงจร ถ่ายภาพโปรโปรเฟสชันแนล และคัดกรองผู้เช่าคุณภาพ", 
+    {
+      name: "description",
+      content: "บริการรับฝากขายและปล่อยเช่าคอนโดระดับพรีเมียม โดยทีมงาน Condo Specialists ดูแลการตลาดครบวงจร ถ่ายภาพโปรโปรเฟสชันแนล และคัดกรองผู้เช่าคุณภาพ",
     },
   ];
 }
@@ -41,7 +41,7 @@ export default function ListingPage() {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+
       {/* --- HERO SECTION --- */}
       <div className="h-[80vh] relative overflow-hidden bg-[#0a0a0a]">
         <div className="absolute inset-0 z-20 flex flex-col justify-end">
@@ -71,7 +71,7 @@ export default function ListingPage() {
         </div>
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0a0a0a] via-black/40 to-transparent"></div>
         <img
-          src="/sell.png" 
+          src="/sell.png"
           className='w-full h-full object-cover opacity-50'
           alt="Luxury Condo Marketing"
         />
@@ -82,16 +82,20 @@ export default function ListingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24">
             <div className="lg:col-span-5">
-                <h2 className="text-4xl md:text-5xl font-light tracking-tighter leading-tight">
-                    ทำไมต้องฝากทรัพย์ <br />
-                    กับ <span className="text-(--primary-color)">Home Property?</span>
-                </h2>
+              <h2 className="text-4xl md:text-5xl font-light tracking-tighter leading-tight">
+                ทำไมต้องฝากทรัพย์ <br />
+                กับ <span className="text-(--primary-color)">Home Property?</span>
+              </h2>
             </div>
             <div className="lg:col-span-7">
-                <p className="text-xl text-gray-500 font-light leading-relaxed">
-                    เราไม่ใช่แค่ผู้ลงประกาศขาย (Listing Agent) แต่เราคือผู้ดูแลทรัพย์สินแบบครบวงจร 
-                    ด้วยประสบการณ์กว่า 10 ปีในย่าน CBD เราเข้าใจพฤติกรรมลูกค้าและรู้วิธีการปิดดีลให้ได้ผลตอบแทนสูงสุด
-                </p>
+              <p className="text-xl text-gray-500 font-light leading-relaxed">
+                เราไม่ใช่แค่ผู้ลงประกาศขาย (Listing Agent) แต่เราคือผู้ดูแลทรัพย์สินแบบครบวงจร
+                ด้วยประสบการณ์กว่า 10 ปีกับคอนโดในบริเวณ <strong>
+                  BTS สายสีเขียว
+                  เน้น อ่อนนุช ถึง แบริ่ง
+                </strong>  เราเข้าใจพฤติกรรมลูกค้าและรู้วิธีการปิดดีลให้ได้ผลตอบแทนสูงสุด
+
+              </p>
             </div>
           </div>
 
@@ -112,28 +116,28 @@ export default function ListingPage() {
       {/* --- STATISTICS SECTION (Social Proof) --- */}
       <section className="py-24 px-6 bg-[#0a0a0a] text-white overflow-hidden relative">
         <div className="max-w-7xl mx-auto relative z-10">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
-                <div className="space-y-2">
-                    <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10+</span>
-                    <p className="text-[10px] uppercase tracking-widest opacity-40">Years of Expertise</p>
-                </div>
-                <div className="space-y-2">
-                    <span className="text-4xl md:text-6xl font-light text-(--primary-color)">1,000+</span>
-                    <p className="text-[10px] uppercase tracking-widest opacity-40">Properties Listed</p>
-                </div>
-                <div className="space-y-2">
-                    <span className="text-4xl md:text-6xl font-light text-(--primary-color)">500+</span>
-                    <p className="text-[10px] uppercase tracking-widest opacity-40">Trusted Landlords</p>
-                </div>
-                <div className="space-y-2">
-                    <span className="text-4xl md:text-6xl font-light text-(--primary-color)">24hr</span>
-                    <p className="text-[10px] uppercase tracking-widest opacity-40">Fast Response</p>
-                </div>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+            <div className="space-y-2">
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10+</span>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">Years of Expertise</p>
             </div>
+            <div className="space-y-2">
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">1,000+</span>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">Properties Listed</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">500+</span>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">Trusted Landlords</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">24hr</span>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">Fast Response</p>
+            </div>
+          </div>
         </div>
         {/* Background Decorative Text */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-[0.02] pointer-events-none select-none">
-            <span className="text-[15rem] font-bold whitespace-nowrap">CONSULTING</span>
+          <span className="text-[15rem] font-bold whitespace-nowrap">CONSULTING</span>
         </div>
       </section>
 
@@ -179,16 +183,16 @@ export default function ListingPage() {
               <span className="relative z-10">เริ่มฝากขาย / ฝากเช่า</span>
               <div className="absolute inset-0 bg-(--primary-color) translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             </Link>
-            
+
             <div className="flex items-center gap-8">
-                <div className="flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-(--primary-color)" />
-                    <span className="text-[10px] uppercase tracking-widest font-bold">Safe & Legal</span>
-                </div>
-                <div className="flex items-center gap-2">
-                    <Key className="w-4 h-4 text-(--primary-color)" />
-                    <span className="text-[10px] uppercase tracking-widest font-bold">Premium Quality</span>
-                </div>
+              <div className="flex items-center gap-2">
+                <ShieldCheck className="w-4 h-4 text-(--primary-color)" />
+                <span className="text-[10px] uppercase tracking-widest font-bold">Safe & Legal</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Key className="w-4 h-4 text-(--primary-color)" />
+                <span className="text-[10px] uppercase tracking-widest font-bold">Premium Quality</span>
+              </div>
             </div>
           </div>
         </div>

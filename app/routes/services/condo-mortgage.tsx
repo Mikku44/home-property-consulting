@@ -26,7 +26,7 @@ export default function SaleWithRedemptionPage() {
     {
       icon: <Percent className="w-6 h-6" />,
       title: "Fair Rates",
-      desc: "อัตราดอกเบี้ยเป็นไปตามที่กฎหมายกำหนด ไม่มีการเก็บค่าธรรมเนียมแอบแฝง"
+      desc: "รับขายฝากคอนโด ดอกเบี้ย 1.25% ต่อเดือน  ไม่มีการเก็บค่าธรรมเนียมแอบแฝง"
     },
     {
       icon: <Landmark className="w-6 h-6" />,
@@ -55,7 +55,7 @@ export default function SaleWithRedemptionPage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-tight">
-                บริการขายฝากคอนโด <br />
+                รับฝากปล่อยเช่า ขาย คอนโด <br />
                 <span className="italic font-serif opacity-80">Safe & Regulated Solutions</span>
               </h1>
               <div className="max-w-xl p-6 bg-white/5 backdrop-blur-md border-l-2 border-(--primary-color) mt-8">
