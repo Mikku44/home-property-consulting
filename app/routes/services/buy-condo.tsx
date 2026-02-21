@@ -25,7 +25,7 @@ export default function CondoBuybackPage() {
     {
       icon: <FileText className="w-6 h-6 text-(--primary-color)" />,
       title: "1. ส่งข้อมูลเพื่อประเมิน",
-      desc: "ส่งรายละเอียดโครงการ รูปถ่าย และราคาที่ต้องการทาง Line: @690zabib เพื่อให้ทีมงานประเมินเบื้องต้น"
+      desc: "ส่งรายละเอียดโครงการ รูปถ่าย และราคาที่ต้องการทาง Line: @condobkk เพื่อให้ทีมงานประเมินเบื้องต้น"
     },
     {
       icon: <Clock className="w-6 h-6 text-(--primary-color)" />,

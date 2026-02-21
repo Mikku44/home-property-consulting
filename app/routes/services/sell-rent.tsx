@@ -118,7 +118,7 @@ export default function ListingPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
             <div className="space-y-2">
-              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10+</span>
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">30,000+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40">Years of Expertise</p>
             </div>
             <div className="space-y-2">
@@ -126,7 +126,7 @@ export default function ListingPage() {
               <p className="text-[10px] uppercase tracking-widest opacity-40">Properties Listed</p>
             </div>
             <div className="space-y-2">
-              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">500+</span>
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10,000+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40">Trusted Landlords</p>
             </div>
             <div className="space-y-2">

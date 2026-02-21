@@ -55,8 +55,8 @@ export default function SaleWithRedemptionPage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-tight">
-                รับฝากปล่อยเช่า ขาย คอนโด <br />
-                <span className="italic font-serif opacity-80">Safe & Regulated Solutions</span>
+               ขายฝากคอนโด ดอกเบี้ย 1.25% ต่อเดือน <br />
+                <span className="italic  opacity-80">ให้ราคาประเมินสูง อนุมัติไว</span>
               </h1>
               <div className="max-w-xl p-6 bg-white/5 backdrop-blur-md border-l-2 border-(--primary-color) mt-8">
                 <p className="text-white/70 text-sm font-light leading-relaxed">
