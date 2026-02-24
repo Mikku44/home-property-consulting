@@ -1,17 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Scale, Building2, Gavel, Handshake, ShieldCheck, Landmark, Receipt, Percent } from 'lucide-react';
+import { Scale, Building2, Gavel, Handshake, ShieldCheck, Landmark, Receipt, Percent, CheckCircle2 } from 'lucide-react';
 import { Link } from 'react-router';
+import { faqData } from '~/const/app';
+import { CondoFAQ } from './components/faq';
 
 
 export function meta() {
   return [
-    { 
-      title: "บริการขายฝากคอนโด ถูกต้องตามกฎหมาย | Home Property Consulting", 
+    {
+      title: "บริการขายฝากคอนโด ถูกต้องตามกฎหมาย | Home Property Consulting",
     },
-    { 
-      name: "description", 
-      content: "บริการขายฝากคอนโดเพื่อเสริมสภาพคล่องทางธุรกิจ ดอกเบี้ยเป็นธรรม ทำสัญญา ณ กรมที่ดินถูกต้องตามกฎหมาย 100% โดยทีมที่ปรึกษา Home Property Consulting", 
+    {
+      name: "description",
+      content: "บริการขายฝากคอนโดเพื่อเสริมสภาพคล่องทางธุรกิจ ดอกเบี้ยเป็นธรรม ทำสัญญา ณ กรมที่ดินถูกต้องตามกฎหมาย 100% โดยทีมที่ปรึกษา Home Property Consulting",
     },
   ];
 }
@@ -37,7 +39,7 @@ export default function SaleWithRedemptionPage() {
 
   return (
     <div className="bg-[#FAF9F6] min-h-screen text-[#1A1A1A] font-sans selection:bg-black selection:text-white">
-      
+
       {/* --- HERO SECTION --- */}
       <div className="h-[70vh] relative overflow-hidden bg-[#0D0D0D]">
         <div className="absolute inset-0 z-20 flex flex-col justify-end">
@@ -55,12 +57,12 @@ export default function SaleWithRedemptionPage() {
                 </span>
               </div>
               <h1 className="text-5xl md:text-7xl font-light text-white tracking-tighter leading-tight">
-               ขายฝากคอนโด ดอกเบี้ย 1.25% ต่อเดือน <br />
+                ขายฝากคอนโด ดอกเบี้ย 1.25% ต่อเดือน <br />
                 <span className="italic  opacity-80">ให้ราคาประเมินสูง อนุมัติไว</span>
               </h1>
               <div className="max-w-xl p-6 bg-white/5 backdrop-blur-md border-l-2 border-(--primary-color) mt-8">
                 <p className="text-white/70 text-sm font-light leading-relaxed">
-                  เสริมสภาพคล่องอย่างมั่นใจ ด้วยบริการขายฝากที่ดำเนินการโดยทีมที่ปรึกษามืออาชีพ 
+                  เสริมสภาพคล่องอย่างมั่นใจ ด้วยบริการขายฝากที่ดำเนินการโดยทีมที่ปรึกษามืออาชีพ
                   เน้นความถูกต้องโปร่งใสในทุกขั้นตอน พร้อมปกป้องสิทธิ์ของเจ้าของทรัพย์ตามกฎหมาย
                 </p>
               </div>
@@ -69,7 +71,7 @@ export default function SaleWithRedemptionPage() {
         </div>
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-[#0D0D0D] via-black/40 to-transparent"></div>
         <img
-          src="/client2.png" 
+          src="/client2.png"
           className='w-full h-full object-cover opacity-40'
           alt="Professional Real Estate Legal Services"
         />
@@ -126,14 +128,14 @@ export default function SaleWithRedemptionPage() {
               </div>
             </div>
           </div>
-          
+
           <div className="lg:col-span-6">
             <div className="bg-white p-12 shadow-sm border border-black/[0.03]">
               <Scale className="w-12 h-12 mb-8 opacity-10" />
               <h3 className="text-2xl italic mb-6">"ความโปร่งใสคือหัวใจของสัญญา"</h3>
               <p className="text-gray-500 font-light leading-relaxed mb-8">
-                เรายึดถือจรรยาบรรณวิชาชีพนายหน้าอสังหาริมทรัพย์อย่างเคร่งครัด 
-                การขายฝากกับ Home Property Consulting จะไม่มีการทำสัญญานอกรอบ 
+                เรายึดถือจรรยาบรรณวิชาชีพนายหน้าอสังหาริมทรัพย์อย่างเคร่งครัด
+                การขายฝากกับ Home Property Consulting จะไม่มีการทำสัญญานอกรอบ
                 หรือข้อตกลงที่ไม่เป็นธรรมต่อผู้ขายฝากเด็ดขาด
               </p>
               <div className="h-px w-full bg-black/5 mb-8"></div>
@@ -144,6 +146,108 @@ export default function SaleWithRedemptionPage() {
           </div>
         </div>
       </section>
+
+      {/* --- ROLES & ADVANTAGES SECTION --- */}
+      <section className="py-32 px-6 bg-[#FAF9F6]">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-20">
+            {/* Left Column: Role */}
+            <div className="lg:w-1/2 space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-sm uppercase tracking-[0.3em] text-(--primary-color) font-bold">บทบาทและจุดเด่น</h2>
+                <h3 className="text-4xl font-light tracking-tighter leading-tight">
+                  บทบาทของเรา <br />
+                  <span className="italic text-gray-400 text-3xl">(เราไม่ได้แค่หาคนปล่อยเงินให้)</span>
+                </h3>
+                <p className="text-gray-500 font-light italic">เราดูแลคุณมากกว่านั้น</p>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10">
+                <div className="space-y-4">
+                  <h4 className="font-medium text-lg flex items-center gap-2">
+                    <span className="text-(--primary-color)">01.</span> ที่ปรึกษาการเงิน
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-500 font-light">
+                    <li>• วิเคราะห์ทรัพย์ก่อนทำขายฝาก</li>
+                    <li>• ประเมินราคาตลาดให้ฟรี</li>
+                    <li>• ดูศักยภาพการขายต่อในอนาคต</li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-lg flex items-center gap-2">
+                    <span className="text-(--primary-color)">02.</span> ตัวกลางมืออาชีพ
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-500 font-light">
+                    <li>• คัดกรองผู้ลงทุนให้</li>
+                    <li>• ต่อรองเงื่อนไขให้ลูกค้า</li>
+                    <li>• ดูแลเอกสารครบวงจร</li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-lg flex items-center gap-2">
+                    <span className="text-(--primary-color)">03.</span> บริหารความเสี่ยง
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-500 font-light">
+                    <li>• วางแผนระยะเวลาไถ่ถอน</li>
+                    <li>• ช่วยวาง Exit Plan</li>
+                    <li>• ลดโอกาสเสียทรัพย์</li>
+                  </ul>
+                </div>
+                <div className="space-y-4">
+                  <h4 className="font-medium text-lg flex items-center gap-2">
+                    <span className="text-(--primary-color)">04.</span> ดูแลถึงวันโอน
+                  </h4>
+                  <ul className="space-y-2 text-sm text-gray-500 font-light">
+                    <li>• นัดวันกรมที่ดิน</li>
+                    <li>• ตรวจเอกสาร</li>
+                    <li>• คุมขั้นตอนให้ราบรื่น</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Why Us & Target */}
+            <div className="lg:w-1/2 space-y-12">
+              <div className="bg-white p-10 border border-black/5 space-y-8">
+                <h3 className="text-2xl font-light tracking-tight">ทำไมต้องใช้บริการ Home Property Consulting</h3>
+                <div className="space-y-6">
+                  {[
+                    { t: "เชี่ยวชาญอสังหาริมทรัพย์จริง", d: "เราทำงานกับบ้านและคอนโดทุกวัน รู้ราคาตลาดจริง" },
+                    { t: "มีฐานนักลงทุนพร้อมเงิน", d: "ไม่ต้องไปหาเอง ไม่ต้องประกาศเอง เรามี นักลงทุน อยู่แล้ว" },
+                    { t: "โปร่งใส ชัดเจน", d: "อธิบายสัญญาทุกข้อ ไม่มีค่าใช้จ่ายแอบแฝง ทำผ่านกรมที่ดินถูกต้องตามกฎหมาย" },
+                    { t: "วางแผนให้คุณ “ได้ทรัพย์คืน”", d: "เราอยากให้คุณใช้ขายฝากเป็น เครื่องมือแก้สภาพคล่อง" }
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <CheckCircle2 className="w-5 h-5 text-(--primary-color) shrink-0" />
+                      <div>
+                        <h5 className="text-sm font-bold uppercase tracking-wide mb-1">{item.t}</h5>
+                        <p className="text-sm text-gray-500 font-light">{item.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="p-10 bg-black text-white space-y-6">
+                <h3 className="text-xl font-light italic">ขายฝาก เหมาะกับใคร</h3>
+                <ul className="grid grid-cols-1 gap-3 text-sm text-white/60 font-light">
+                  <li className="flex items-center gap-2 tracking-wide">• เจ้าของบ้าน/คอนโดที่ต้องการเงินด่วน</li>
+                  <li className="flex items-center gap-2 tracking-wide">• นักลงทุนที่ต้องการหมุนเงินเร็ว</li>
+                  <li className="flex items-center gap-2 tracking-wide">• คนที่ติดเครดิตบูโร รีไฟแนนซ์ไม่ได้</li>
+                  <li className="flex items-center gap-2 tracking-wide">• คนที่ต้องการเงินโดยไม่ต้องขายขาด</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* --- FAQ SECTION --- */}
+      <section className=" px-6 bg-white">
+        <CondoFAQ faqs={faqData[4]} />
+      </section>
+
 
       {/* --- CTA --- */}
       <section className="py-40 px-6 bg-[#0a0a0a] text-white text-center">
@@ -158,8 +262,8 @@ export default function SaleWithRedemptionPage() {
           </p>
           <div className="flex flex-col items-center gap-10">
             <div className="w-px h-20 bg-white/10"></div>
-            <a 
-              href="https://line.me/R/ti/p/@condobkk" 
+            <a
+              href="https://line.me/R/ti/p/@condobkk"
               target="_blank"
               className="px-16 py-6 bg-white text-black text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-(--primary-color) transition-all duration-300"
             >
@@ -168,7 +272,7 @@ export default function SaleWithRedemptionPage() {
           </div>
         </div>
       </section>
-      
+
     </div>
   );
 }

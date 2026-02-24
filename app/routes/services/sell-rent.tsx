@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Camera, Megaphone, Key, Search, BarChart3, Users2, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router';
 import type { Route } from './+types/sell-rent';
+import { faqData } from '~/const/app';
+import { CondoFAQ } from './components/faq';
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -169,6 +171,146 @@ export default function ListingPage() {
           </div>
         </div>
       </section>
+
+      {/* --- EXCLUSIVE LISTING & LEASING MANAGEMENT SECTION --- */}
+      <section className="py-32 px-6 bg-[#FAF9F6] border-t border-black/[0.03]">
+        <div className="max-w-7xl mx-auto">
+
+          {/* Header & Philosophy */}
+          <div className="max-w-4xl mb-24 space-y-8">
+            <div className="space-y-4">
+              <h2 className="text-sm uppercase tracking-[0.3em] text-(--primary-color) font-bold">Exclusive Listing & Leasing Management Service</h2>
+              <h3 className="text-4xl md:text-6xl font-light tracking-tighter leading-tight">
+                ดูแลทรัพย์สินของคุณ <br />
+                <span className="italic text-gray-400">เสมือนเป็นทรัพย์สินของเราเอง</span>
+              </h3>
+            </div>
+            <p className="text-gray-500 font-light leading-relaxed text-lg">
+              อสังหาริมทรัพย์ไม่ใช่เพียงทรัพย์สิน แต่คือสินทรัพย์ที่ต้องได้รับการบริหารจัดการอย่างมีกลยุทธ์
+              Home Property Consulting ให้บริการฝากขายและฝากปล่อยเช่าแบบครบวงจร
+              โดยมุ่งเน้นความปลอดภัยทางกฎหมาย และความคุ้มค่าสูงสุดสำหรับเจ้าของทรัพย์ทุกท่าน
+            </p>
+          </div>
+
+          {/* AWARD SECTION */}
+          <div className="bg-white border border-black/5 p-8 md:p-16 mb-32 relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+              <div className="lg:col-span-4 flex justify-center">
+                {/* Award Image Placeholder */}
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-(--primary-color) blur-3xl opacity-10 group-hover:opacity-20 transition-opacity"></div>
+                  <img
+                    src="/awart-cert.jpg"
+                    alt="Dot Property Thailand Awards 2025"
+                    className="relative z-10 w-64 h-auto drop-shadow-2xl"
+                  />
+                </div>
+              </div>
+              <div className="lg:col-span-8 space-y-6">
+                <div className="inline-block px-4 py-1 border border-(--primary-color) text-(--primary-color) text-[10px] font-bold uppercase tracking-widest">
+                  Industry Recognition
+                </div>
+                <h3 className="text-3xl font-light tracking-tight italic">
+                  “The Best Rental and Leasing Market” <br />
+                  <span className="text-xl not-italic text-gray-400">จาก Dot Property Thailand Awards 2025</span>
+                </h3>
+                <p className="text-sm text-gray-500 font-light leading-relaxed">
+                  รางวัลระดับประเทศนี้สะท้อนถึงความเชี่ยวชาญด้านตลาดเช่า ประสิทธิภาพในการสร้างรายได้ที่เสถียร
+                  และมาตรฐานการบริการที่ได้รับการยอมรับในระดับอุตสาหกรรมอสังหาริมทรัพย์
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                  {['การบริหารตลาดเช่าดีเยี่ยม', 'ผลงานการปล่อยเช่าคุณภาพ', 'สร้างรายได้เสถียรให้เจ้าของ', 'มาตรฐานบริการระดับสากล'].map((item, i) => (
+                    <div key={i} className="flex items-center gap-2 text-xs font-medium uppercase tracking-tighter">
+                      <div className="w-1.5 h-1.5 rounded-full bg-(--primary-color)"></div>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Service Dual Columns */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-1px bg-black/5 border border-black/5">
+
+            {/* ฝากขาย - Sales */}
+            <div className="bg-white p-12 space-y-10">
+              <div className="space-y-4">
+                <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-gray-400 italic">Exclusive Sales Representation</h4>
+                <h3 className="text-3xl font-light tracking-tight">บริการฝากขาย</h3>
+                <p className="text-sm text-gray-500 font-light italic">ขายอย่างมีกลยุทธ์ เพื่อผลลัพธ์ที่ชัดเจน</p>
+              </div>
+
+              <div className="space-y-6">
+                {[
+                  { t: "Strategic Market Analysis", d: "ประเมินราคาโดยอิงข้อมูลตลาดจริงและสถิติการซื้อขายล่าสุด" },
+                  { t: "Property Positioning", d: "กำหนดจุดขายให้ชัดเจน เพื่อให้ทรัพย์โดดเด่นในตลาด" },
+                  { t: "Professional Presentation", d: "ถ่ายภาพคุณภาพสูง และจัดทำคำอธิบายทรัพย์เชิงกลยุทธ์" },
+                  { t: "Professional Negotiation", d: "บริหารการต่อรองเพื่อรักษาผลประโยชน์สูงสุดของเจ้าของ" }
+                ].map((item, i) => (
+                  <div key={i} className="space-y-1">
+                    <h5 className="text-sm font-bold uppercase tracking-wide">{item.t}</h5>
+                    <p className="text-sm text-gray-500 font-light">{item.d}</p>
+                  </div>
+                ))}
+              </div>
+              <div className="pt-6 border-t border-black/5">
+                <p className="text-[10px] text-gray-400 leading-relaxed uppercase tracking-widest">End-to-End Transaction Management</p>
+              </div>
+            </div>
+
+            {/* ฝากเช่า - Leasing */}
+            <div className="bg-[#0D0D0D] p-12 text-white space-y-10">
+              <div className="space-y-4">
+                <h4 className="text-xs uppercase tracking-[0.3em] font-bold text-(--primary-color) italic">Leasing & Tenant Management</h4>
+                <h3 className="text-3xl font-light tracking-tight">บริการฝากปล่อยเช่า</h3>
+                <p className="text-white/50 text-sm font-light italic">เปลี่ยนทรัพย์สินของคุณให้เป็นรายได้ประจำอย่างมั่นคง</p>
+              </div>
+
+              <div className="space-y-6">
+                {[
+                  { t: "Rental Market Analysis", d: "วิเคราะห์ราคาค่าเช่าอย่างแม่นยำ เพื่อลดระยะเวลาห้องว่าง" },
+                  { t: "Targeted Tenant Acquisition", d: "เข้าถึงกลุ่ม Expat และผู้เช่าคุณภาพผ่านเครือข่ายบริษัท" },
+                  { t: "Tenant Screening Process", d: "คัดกรองผู้เช่าอย่างรอบคอบ ประเมินความน่าเชื่อถือทางการเงิน" },
+                  { t: "Ongoing Support", d: "ประสานงานนิติบุคคล และดูแลการต่อสัญญาอย่างต่อเนื่อง" }
+                ].map((item, i) => (
+                  <div key={i} className="space-y-1">
+                    <h5 className="text-sm font-bold uppercase tracking-wide text-(--primary-color)">{item.t}</h5>
+                    <p className="text-sm text-white/50 font-light">{item.d}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="p-6 bg-white/5 border border-white/10">
+                <p className="text-xs font-light leading-relaxed italic text-white/70">
+                  "ในฐานะผู้ได้รับรางวัล The Best Rental and Leasing Market เราทำหน้าที่เสมือนทีม Property Manager ส่วนตัว ให้คุณรับ Passive Income โดยไม่ต้องบริหารเอง"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Philosophy Footer */}
+          <div className="mt-32 text-center space-y-8">
+            <div className="max-w-2xl mx-auto space-y-4">
+              <h3 className="text-sm uppercase tracking-[0.4em] font-bold">Our Philosophy</h3>
+              <p className="text-2xl font-light italic text-gray-500">
+                "เราไม่ได้เพียงรับฝากขายหรือปล่อยเช่า แต่เราบริหารทรัพย์ของคุณ เสมือนเป็นสินทรัพย์ในพอร์ตของเราเอง"
+              </p>
+            </div>
+            <div className="h-px w-20 bg-(--primary-color) mx-auto"></div>
+            <p className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/40">
+              Professional. Strategic. Award-Winning. Reliable.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* --- FAQ SECTION --- */}
+      <section className="py-32 px-6 bg-white">
+        <CondoFAQ faqs={[...faqData[2], ...faqData[3]]} />
+      </section>
+
 
       {/* --- CTA SECTION --- */}
       <section className="py-40 px-6 text-center border-t border-black/5">

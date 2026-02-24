@@ -9,6 +9,7 @@ export default [
     route("/services/buy-condo", "routes/services/buy-condo.tsx"),
     route("/services/sell-rent", "routes/services/sell-rent.tsx"),
     route("/services/condo-mortgage", "routes/services/condo-mortgage.tsx"),
+    route("/services/money-making-course", "routes/services/money-making-course.tsx"),
 
     route("/blog", "routes/blog.tsx"),
     route("/blog/:slug", "routes/blog-detail.tsx"),

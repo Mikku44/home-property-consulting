@@ -9,6 +9,8 @@ import { Link } from 'react-router';
 import VisionSection from './home/visionSection';
 import VisualCarousel from '~/components/imageSlider';
 import CertificationSection from '~/components/CertificationSection';
+import { CondoFAQ } from './services/components/faq';
+import { faqData } from '~/const/app';
 
 // --- Types ---
 interface Service {
@@ -205,7 +207,7 @@ export default function HomePropertyPro() {
       {/* 4. SERVICES - MINIMAL LIST DESIGN */}
       <section className="py-32 px-8">
         <div className="max-w-7xl mx-auto relative">
-          
+
           <div className="mb-20">
             <h2 className="text-[10px] uppercase tracking-[0.4em] font-bold text-black/30 mb-4">Professional Expertise</h2>
             <h3 className="text-4xl font-light tracking-tighter">ขอบเขตการให้บริการ</h3>
@@ -271,7 +273,7 @@ export default function HomePropertyPro() {
                     <h4 className="text-[11px] uppercase tracking-[0.2em] font-bold text-black/40 mb-3">
                       {item.title}
                     </h4>
-                    <h5 className="text-xl font-medium tracking-tight mb-4">
+                    <h5 className="text-xl font-medium mb-4">
                       {item.thaiTitle}
                     </h5>
                     <p className="text-sm text-black/50 leading-relaxed font-light">
@@ -309,6 +311,12 @@ export default function HomePropertyPro() {
       ]} />
 
       <VisionSection />
+
+
+      {/* --- FAQ SECTION --- */}
+      <section className=" px-6 bg-white">
+        <CondoFAQ faqs={faqData["Featured Snippets"]} />
+      </section>
 
       {/* 5. INVESTMENT HIGHLIGHT - CLEAN CALLOUT */}
       <section className="bg-black py-40 px-8 text-white text-center overflow-hidden relative">
