@@ -120,20 +120,24 @@ export default function ListingPage() {
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 text-center">
             <div className="space-y-2">
-              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">30,000+</span>
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40">Years of Expertise</p>
-            </div>
-            <div className="space-y-2">
-              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">1,000+</span>
-              <p className="text-[10px] uppercase tracking-widest opacity-40">Properties Listed</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">มีประสบการณ์รวมมากกว่า 37+  ปี</p>
             </div>
             <div className="space-y-2">
               <span className="text-4xl md:text-6xl font-light text-(--primary-color)">10,000+</span>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">Properties Listed</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">อสังหาริมทรัพย์ลงประกาศมากกว่า 10,000  รายการ</p>
+            </div>
+            <div className="space-y-2">
+              <span className="text-4xl md:text-6xl font-light text-(--primary-color)">30,000+</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40">Trusted Landlords</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">เจ้าของทรัพย์/เจ้าของห้องที่ไว้วางใจมากกว่า 30,000 ราย</p>
             </div>
             <div className="space-y-2">
               <span className="text-4xl md:text-6xl font-light text-(--primary-color)">24hr</span>
               <p className="text-[10px] uppercase tracking-widest opacity-40">Fast Response</p>
+              <p className="text-[10px] uppercase tracking-widest opacity-40">ตอบกลับรวดเร็วตลอด 24 ชั่วโมง</p>
             </div>
           </div>
         </div>
