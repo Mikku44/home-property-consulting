@@ -22,7 +22,7 @@ export default function FloatingContact() {
       label: "Call Us",
       icon: <FaPhone size={16} />,
       color: "bg-[#111827]", // Dark Slate for a formal look
-      href: "tel:020964653",
+      href: "tel:0654942879",
     },
     {
       label: "Email",

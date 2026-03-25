@@ -83,7 +83,7 @@ export default function Footer() {
               </div>
               <div className="flex gap-4 items-center group">
                 <Phone className="w-4 h-4 text-white/20 shrink-0" />
-                <p className="text-xs font-light text-white/60 group-hover:text-white transition-colors">02 096 4653</p>
+                <p className="text-xs font-light text-white/60 group-hover:text-white transition-colors">06 549 42879</p>
               </div>
               <div className="flex gap-4 items-center group">
                 <Mail className="w-4 h-4 text-white/20 shrink-0" />

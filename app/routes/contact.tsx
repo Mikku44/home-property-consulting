@@ -113,7 +113,7 @@ export default function ContactPage() {
       label: "Call Us",
       icon: <FaPhone size={16} />,
       color: "bg-[#111827]", // Dark Slate for a formal look
-      href: "tel:020964653",
+      href: "tel:0654942879",
     },
     {
       label: "Email",
@@ -134,8 +134,8 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-5 h-5" />,
       label: "ติดต่อสอบถาม",
-      value: "02 096 4653",
-      link: "tel:020964653"
+      value: "06 549 42879",
+      link: "tel:0654942879"
     },
     {
       icon: <Mail className="w-5 h-5" />,
